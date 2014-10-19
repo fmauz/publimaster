@@ -7,6 +7,7 @@ class AddressSerializer < ActiveModel::Serializer
   			 :neighborhood,
   			 :zipcode
 
+  has_one :street_suffix
   has_one :city
   has_one :state
 
