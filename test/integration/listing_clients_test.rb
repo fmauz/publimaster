@@ -10,6 +10,6 @@ class ListingClientsTest < ActionDispatch::IntegrationTest
 
   	assert_equal 200, response.status
   	assert_equal Mime::JSON, response.content_type
-  	assert_equal Client.count, json( response.body ).size
+  	assert_equal Client.count, json( response.body )["clients"].size
   end
 end
