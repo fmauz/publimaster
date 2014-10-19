@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019180438) do
+ActiveRecord::Schema.define(version: 20141019180732) do
 
   create_table "addresses", force: true do |t|
     t.string   "street_suffix"
@@ -86,6 +86,26 @@ ActiveRecord::Schema.define(version: 20141019180438) do
   end
 
   add_index "contact_phones", ["address_id"], name: "index_contact_phones_on_address_id", using: :btree
+
+  create_table "employees", force: true do |t|
+    t.string   "name"
+    t.string   "cpf"
+    t.integer  "address_id"
+    t.string   "position"
+    t.string   "enrollment"
+    t.date     "date_of_admission"
+    t.date     "date_of_resignation"
+    t.decimal  "salary",                      precision: 8, scale: 2
+    t.string   "transportation_voucher_code"
+    t.decimal  "price_bus_passes",            precision: 8, scale: 2
+    t.integer  "user_id"
+    t.text     "observation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "employees", ["address_id"], name: "index_employees_on_address_id", using: :btree
+  add_index "employees", ["user_id"], name: "index_employees_on_user_id", using: :btree
 
   create_table "segments", force: true do |t|
     t.string   "name"
