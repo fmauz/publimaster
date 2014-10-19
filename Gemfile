@@ -9,6 +9,11 @@ gem 'spring', :group => :development
 gem 'mysql2'
 
 
+group :test do
+	gem 'faker'
+	gem 'factory_girl_rails'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
