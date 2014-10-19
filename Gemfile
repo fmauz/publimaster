@@ -10,10 +10,12 @@ gem 'mysql2'
 
 gem 'devise'
 
-group :test do
+group :test, :development do
 	gem 'faker'
 	gem 'factory_girl_rails'
 end
+
+gem "active_model_serializers", "~> 0.8.0"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

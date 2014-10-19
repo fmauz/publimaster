@@ -26,42 +26,17 @@
               </tr>
             </thead>
             <tbody> 
-              <tr>
-                <th>1</th>
-                <td>Nome completo da empresa LTDA.</td>
-                <td>999.999.999-99</td>
-                <td>Transportadora</td>
-                <td>21 98444-44444</td>
-                <td>Fulano de Tal e Etc</td>
+              <tr ng-repeat="client in clients">
+                <th>{{ client.id }}</th>
+                <td>{{ client.name }}</td>
+                <td>{{ client.cpfCnpj }}</td>
+                <td>{{ client.segment.name }}</td>
+                <td></td>
+                <td></td>
                 <td>
-                  <a href="#" class="btn btn-secondary btn-sm btn-icon icon-left">
-                    Editar
-                  </a>
-                  <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
-                    Excluir
-                  </a>
-                  <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
-                    Visualizar
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <th>2</th>
-                <td>Nome completo da empresa LTDA.</td>
-                <td>999.999.999-99</td>
-                <td>Transportadora</td>
-                <td>21 98444-44444</td>
-                <td>Fulano de Tal e Etc</td>
-                <td>
-                  <a href="#" class="btn btn-secondary btn-sm btn-icon icon-left">
-                    Editar
-                  </a>
-                  <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
-                    Excluir
-                  </a>
-                  <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
-                    Visualizar
-                  </a>
+                  <a href="#/clientes/{{client.id}}/edit" class="btn btn-secondary btn-sm btn-icon icon-left">Editar</a>
+                  <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">Excluir</a>
+                  <a href="#/clientes/{{client.id}}" class="btn btn-info btn-sm btn-icon icon-left">Visualizar</a>
                 </td>
               </tr>
             </tbody>
