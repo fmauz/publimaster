@@ -12,12 +12,7 @@
 <div class="form-group">
   <label class="col-sm-2 control-label" for="field-1">Identificação</label>
     <div class="col-sm-3">
-    <select class="form-control">
-      <option>Option 1</option>
-      <option>Option 2</option>
-      <option>Option 3</option>
-      <option>Option 4</option>
-      <option>Option 5</option>
+    <select class="form-control" ng-model="client.clientType.id" ng-options="client_type.id as client_type.name for client_type in client_types">
     </select>
   </div>
 
@@ -27,12 +22,10 @@
 </div>
 
 <div class="form-group-separator"></div>
-
 <div class="form-group">
   <label class="col-sm-2 control-label">Endereço</label>
   <div class="col-sm-2">
     <select class="form-control" ng-model="client.address.streetSuffix.id" ng-options="street_suffix.id as street_suffix.name for street_suffix in street_suffixes">
-      <option>Logradouro</option>
     </select>
   </div>
   <div class="col-sm-4">

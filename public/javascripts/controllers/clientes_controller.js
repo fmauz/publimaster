@@ -1,4 +1,4 @@
-publimasterApp.controller('ClientesCtrl', [ "$scope", "$routeParams", "Client", "StreetSuffix", function($scope, $routeParams, Client, StreetSuffix) {
+publimasterApp.controller('ClientesCtrl', [ "$scope", "$routeParams", "Client", "StreetSuffix", "ClientType", function($scope, $routeParams, Client, StreetSuffix, ClientType) {
 	$scope.menu_active = "clientes";
 
 	$scope.clients = [];
@@ -14,7 +14,11 @@ publimasterApp.controller('ClientesCtrl', [ "$scope", "$routeParams", "Client", 
     $scope.street_suffixes = [];
 
     StreetSuffix.query().then(function(results){
-      $scope.street_suffixes = results["streetSuffixes"];
+      $scope.street_suffixes = results;
+    });
+
+    ClientType.query().then(function(results){
+      $scope.client_types = results;
     });
 
     Client.get( $routeParams.id ).then(function(result){
