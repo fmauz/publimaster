@@ -1,7 +1,7 @@
 FactoryGirl.define do
 	factory :employee do
 		name { Faker::Name.name }
-		cpf "33333333333"
+		cpf { Faker::CPF.pretty }
 		address
 		position "Director"
 		enrollment "1234"

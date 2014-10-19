@@ -31,8 +31,10 @@
                 <td>{{ client.name }}</td>
                 <td>{{ client.cpfCnpj }}</td>
                 <td>{{ client.segment.name }}</td>
-                <td></td>
-                <td></td>
+                <td><span ng-if="client.address.contactPhones.length > 0">
+                    {{ client.address.contactPhones[0].phoneNumer }}
+                    </span></td>
+                <td>{{client.employee.name}}</td>
                 <td>
                   <a href="#/clientes/{{client.id}}/edit" class="btn btn-secondary btn-sm btn-icon icon-left">Editar</a>
                   <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">Excluir</a>

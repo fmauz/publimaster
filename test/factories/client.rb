@@ -1,7 +1,7 @@
 FactoryGirl.define do
 	factory :client do
 		name { Faker::Name.name }
-		cpf_cnpj "33333333333"
+		cpf_cnpj { Faker::CPF.pretty }
 		client_type
 		responsible { Faker::Name.name }
 		director { Faker::Name.name }

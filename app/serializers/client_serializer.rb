@@ -9,4 +9,6 @@ class ClientSerializer < ActiveModel::Serializer
   			 :observation
 
   has_one :segment
+  has_one :address
+  has_one :employee
 end

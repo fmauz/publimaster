@@ -12,6 +12,7 @@ gem 'devise'
 
 group :test, :development do
 	gem 'faker'
+	gem 'cpf_faker'
 	gem 'factory_girl_rails'
 end
 

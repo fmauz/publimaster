@@ -18,6 +18,10 @@ publimasterApp.config([ '$routeProvider', function($routeProvider){
     controller: 'ClientesCtrl',
     templateUrl: '/views/clientes/new.html'
   })
+  .when('/clientes/:id/edit',{
+    controller: 'ClientesCtrl',
+    templateUrl: '/views/clientes/edit.html'
+  })
   .otherwise({
     redirectTo:'/'
   });
