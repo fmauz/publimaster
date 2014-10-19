@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019175117) do
+ActiveRecord::Schema.define(version: 20141019175346) do
+
+  create_table "addresses", force: true do |t|
+    t.string   "street_suffix"
+    t.string   "address"
+    t.string   "secondary_address"
+    t.string   "building_number"
+    t.string   "neighborhood"
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.string   "zipcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
+  add_index "addresses", ["state_id"], name: "index_addresses_on_state_id", using: :btree
 
   create_table "client_types", force: true do |t|
     t.string   "name"
@@ -22,20 +38,22 @@ ActiveRecord::Schema.define(version: 20141019175117) do
   create_table "clients", force: true do |t|
     t.string   "name"
     t.string   "cpf_cnpj"
-    t.integer  "client_type_id"
     t.string   "responsible"
     t.string   "director"
     t.string   "accountant"
     t.string   "client_group"
     t.text     "observation"
+    t.integer  "client_type_id"
     t.integer  "address_id"
     t.integer  "segment_id"
+    t.integer  "employee_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "clients", ["address_id"], name: "index_clients_on_address_id", using: :btree
   add_index "clients", ["client_type_id"], name: "index_clients_on_client_type_id", using: :btree
+  add_index "clients", ["employee_id"], name: "index_clients_on_employee_id", using: :btree
   add_index "clients", ["segment_id"], name: "index_clients_on_segment_id", using: :btree
 
 end

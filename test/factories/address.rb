@@ -8,7 +8,7 @@ FactoryGirl.define do
 		city
 		state { city.state }
 		zipcode Faker::Address.zip
-		employee
+		
 		after( :create ) do |address|
 			FactoryGirl.create_list( :contact_phone, 2, address: address )
 			FactoryGirl.create_list( :contact_email, 2, address: address )

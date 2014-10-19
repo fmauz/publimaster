@@ -10,5 +10,6 @@ FactoryGirl.define do
 		observation { Faker::Lorem.paragraph(2) }
 		address
 		segment
+		employee
 	end
 end
