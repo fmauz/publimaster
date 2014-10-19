@@ -4,6 +4,6 @@ FactoryGirl.define do
 		area_code { Faker::PhoneNumber.area_code }
 		phone_numer { Faker::PhoneNumber.phone_number }
 		extension { Faker::PhoneNumber.extension }
-		fax true
+		is_fax true
 	end
 end

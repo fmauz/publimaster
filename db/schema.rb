@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019175346) do
+ActiveRecord::Schema.define(version: 20141019180125) do
 
   create_table "addresses", force: true do |t|
     t.string   "street_suffix"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20141019175346) do
 
   add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
   add_index "addresses", ["state_id"], name: "index_addresses_on_state_id", using: :btree
+
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.integer  "state_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cities", ["state_id"], name: "index_cities_on_state_id", using: :btree
 
   create_table "client_types", force: true do |t|
     t.string   "name"
@@ -55,5 +64,34 @@ ActiveRecord::Schema.define(version: 20141019175346) do
   add_index "clients", ["client_type_id"], name: "index_clients_on_client_type_id", using: :btree
   add_index "clients", ["employee_id"], name: "index_clients_on_employee_id", using: :btree
   add_index "clients", ["segment_id"], name: "index_clients_on_segment_id", using: :btree
+
+  create_table "contact_emails", force: true do |t|
+    t.string   "email"
+    t.string   "contact"
+    t.integer  "address_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contact_emails", ["address_id"], name: "index_contact_emails_on_address_id", using: :btree
+
+  create_table "contact_phones", force: true do |t|
+    t.string   "area_code"
+    t.string   "phone_numer"
+    t.string   "extension"
+    t.string   "is_fax"
+    t.integer  "address_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contact_phones", ["address_id"], name: "index_contact_phones_on_address_id", using: :btree
+
+  create_table "states", force: true do |t|
+    t.string   "name"
+    t.string   "state_abbr"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
