@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019181352) do
+ActiveRecord::Schema.define(version: 20141019211221) do
 
   create_table "addresses", force: true do |t|
-    t.string   "street_suffix"
     t.string   "address"
     t.string   "secondary_address"
     t.string   "building_number"
     t.string   "neighborhood"
     t.integer  "city_id"
     t.integer  "state_id"
+    t.integer  "street_suffix_id"
     t.string   "zipcode"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20141019181352) do
 
   add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
   add_index "addresses", ["state_id"], name: "index_addresses_on_state_id", using: :btree
+  add_index "addresses", ["street_suffix_id"], name: "index_addresses_on_street_suffix_id", using: :btree
 
   create_table "cities", force: true do |t|
     t.string   "name"
@@ -122,6 +123,12 @@ ActiveRecord::Schema.define(version: 20141019181352) do
   create_table "states", force: true do |t|
     t.string   "name"
     t.string   "state_abbr"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "street_suffixes", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
