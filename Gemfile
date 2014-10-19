@@ -8,6 +8,7 @@ gem 'spring', :group => :development
 
 gem 'mysql2'
 
+gem 'devise'
 
 group :test do
 	gem 'faker'
