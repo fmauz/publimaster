@@ -14,6 +14,8 @@ group :test, :development do
 	gem 'faker'
 	gem 'cpf_faker'
 	gem 'factory_girl_rails'
+  gem 'pry'
+  gem 'awesome_print'
 end
 
 gem "active_model_serializers", "~> 0.8.0"
@@ -32,4 +34,3 @@ gem "active_model_serializers", "~> 0.8.0"
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-gem 'pry'

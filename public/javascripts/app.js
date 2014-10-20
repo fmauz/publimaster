@@ -12,15 +12,24 @@ publimasterApp.config([ '$routeProvider', function($routeProvider){
   })
   .when('/clientes',{
     controller: 'ClientesCtrl',
-    templateUrl: '/views/clientes/list.html'
+    templateUrl: '/views/clientes/list.html',
+    resolve: {
+      type: function(){ return "list" }
+    }
   })
   .when('/clientes/new',{
     controller: 'ClientesCtrl',
-    templateUrl: '/views/clientes/new.html'
+    templateUrl: '/views/clientes/new.html',
+    resolve: {
+      type: function(){ return "new" }
+    }
   })
   .when('/clientes/:id/edit',{
     controller: 'ClientesCtrl',
-    templateUrl: '/views/clientes/edit.html'
+    templateUrl: '/views/clientes/edit.html',
+    resolve: {
+      type: function(){ return "edit" }
+    }
   })
   .otherwise({
     redirectTo:'/'

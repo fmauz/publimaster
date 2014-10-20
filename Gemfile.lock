@@ -30,6 +30,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    awesome_print (1.2.0)
     bcrypt (3.1.7)
     builder (3.2.2)
     clipboard (1.0.5)
@@ -114,6 +115,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.8.0)
+  awesome_print
   cpf_faker
   devise
   factory_girl_rails

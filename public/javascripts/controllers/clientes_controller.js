@@ -1,8 +1,19 @@
-publimasterApp.controller('ClientesCtrl', [ "$scope", "$routeParams", "Client", "StreetSuffix", "ClientType", "Segment", "Employee", "State", function($scope, $routeParams, Client, StreetSuffix, ClientType, Segment, Employee, State) {
-	$scope.menu_active = "clientes";
+publimasterApp.controller('ClientesCtrl', [ "$scope", "$routeParams", "$location", "NavBarService", "Client", "StreetSuffix", "ClientType", "Segment", "Employee", "State", "type", function($scope, $routeParams, $location, NavBarService, Client, StreetSuffix, ClientType, Segment, Employee, State, type) {
+	NavBarService.setMenu( "clientes" );
 
 	$scope.clients = [];
-	$scope.client = {};
+	$scope.client = new Client({
+                    "clientType": {},
+                    "segment": {},
+                    "employee": {},
+                    "address": { 
+                      "streetSuffix": {},
+                      "contactPhones": [{}], 
+                      "contactEmails": [{}],
+                      "city": {}, 
+                      "state": { "cities": [] }
+                    }
+                  });
 
   $scope.client_types = [];
   $scope.street_suffixes = [];
@@ -10,8 +21,25 @@ publimasterApp.controller('ClientesCtrl', [ "$scope", "$routeParams", "Client", 
   $scope.employees = [];
   $scope.states = [];
 
+  $scope.destroy = function( resource ){
+    if( confirm("Deseja apagar o registro ?") ){
+      resource.delete().then(function(){
+        $scope.clients.splice( $scope.clients.indexOf(resource), 1 ); 
+        if( $scope.clients.length == 0 ){ $location.path("/clientes"); }
+      });
+    }
+  }
+
   $scope.update = function(){
-    $scope.client.update();
+    $scope.client.update().then(function(){
+      $location.path("/clientes");
+    });
+  }
+
+  $scope.create = function(){
+    $scope.client.create().then(function(){
+      $location.path("/clientes");
+    });
   }
 
   $scope.changeNode = function(list, object, id){
@@ -19,35 +47,47 @@ publimasterApp.controller('ClientesCtrl', [ "$scope", "$routeParams", "Client", 
     angular.extend( object, item );
   }
 
-  if( $routeParams.id == undefined ){
-    Client.query({}).then(function( results ){
-     $scope.clients = results;
-   });
-  }else{
+  switch( type ){
+    case "list":
+      Client.query({}).then(function( results ){
+       $scope.clients = results;
+     });
+      break;
+    case "new":
+    case "edit":
+      console.log( $routeParams.id )
+      if( $routeParams.id != undefined ){
+        Client.get( $routeParams.id ).then(function(result){
+          $scope.client = result;
+        });
+      }
 
-    State.query().then(function(results){
-      $scope.states = results;
-    });
+      State.query().then(function(results){
+        $scope.states = results;
+      });
 
-    Employee.query().then(function(results){
-      $scope.employees = results;
-    });
+      Employee.query().then(function(results){
+        $scope.employees = results;
+      });
 
-    Segment.query().then(function(results){
-      $scope.segments = results;
-    })
+      Segment.query().then(function(results){
+        $scope.segments = results;
+      })
 
-    StreetSuffix.query().then(function(results){
-      $scope.street_suffixes = results;
-    });
+      StreetSuffix.query().then(function(results){
+        $scope.street_suffixes = results;
+      });
 
-    ClientType.query().then(function(results){
-      $scope.client_types = results;
-    });
+      ClientType.query().then(function(results){
+        $scope.client_types = results;
+      });
 
-    Client.get( $routeParams.id ).then(function(result){
-      $scope.client = result;
-    });
+      break;
+    default:
+      $location.path("/clientes");
+      break;
+
   }
 
+  
 }]);

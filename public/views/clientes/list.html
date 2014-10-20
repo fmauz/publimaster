@@ -12,7 +12,15 @@
           </div>
         </div>
 
-        <div class="table-responsive">
+        <div class="row" ng-if="clients.length==0">
+          <div class="col-md-12">
+            <div class="alert alert-info text-center">
+              Nenhum registro encontrado, para inserir um novo registro clique no botão acima.
+            </div>
+          </div>
+        </div>
+
+        <div class="table-responsive" ng-if="clients.length > 0">
           <table cellspacing="0" class="table table-small-font table-bordered table-striped">
             <thead>
               <tr>
@@ -32,12 +40,12 @@
                 <td>{{ client.cpfCnpj }}</td>
                 <td>{{ client.segment.name }}</td>
                 <td><span ng-if="client.address.contactPhones.length > 0">
-                    {{ client.address.contactPhones[0].phoneNumer }}
+                    {{ client.address.contactPhones[0].phoneNumber }}
                     </span></td>
                 <td>{{client.employee.name}}</td>
                 <td>
                   <a href="#/clientes/{{client.id}}/edit" class="btn btn-secondary btn-sm btn-icon icon-left">Editar</a>
-                  <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">Excluir</a>
+                  <a href="" ng-click="destroy( client );" class="btn btn-danger btn-sm btn-icon icon-left">Excluir</a>
                   <a href="#/clientes/{{client.id}}" class="btn btn-info btn-sm btn-icon icon-left">Visualizar</a>
                 </td>
               </tr>
@@ -47,7 +55,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" ng-if="clients.length > 0">
             <div class="col-xs-12 text-center">
               <div class="dataTables_paginate paging_simple_numbers">
                 <ul class="pagination">

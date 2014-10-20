@@ -22,21 +22,21 @@
                 
         </header>
             
-        
+
             
         <ul id="main-menu" class="main-menu">
           <!-- add class "multiple-expanded" to allow multiple submenus to open -->
           <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
           <!-- <li class="opened active"> -->
 
-          <li ng-class="{active: menu_active=='dashboard'}">
+          <li ng-class="{active: menu.is('dashboard')}">
             <a href="#/">
               <i class="linecons-shop"></i>
               <span class="title">Inicio</span>
             </a>
           </li>
 
-          <li ng-class="{active: menu_active=='clientes'}">
+          <li ng-class="{active: menu.is('clientes')}">
             <a href="#/clientes">
               <i class="linecons-user"></i>
               <span class="title">Clientes</span>

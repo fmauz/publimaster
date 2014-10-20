@@ -14,6 +14,18 @@ class ClientsController < ApplicationController
     render json: @client
   end
 
+  def create
+    @client = Client.new( client_params )
+    @client.save
+    render json: @client
+  end
+
+  def destroy
+    @client = Client.find( params[:id] )
+    @client.destroy
+    render json: @client
+  end
+
   def client_params
     objParam = params.require( :client ).permit( :name, :cpf_cnpj, :responsible, :director, :accountant, :client_group, :observation, :segment_id, :employee_id, :client_type_id,
                                     address: [ :id, :street_suffix_id, :street_address, :secondary_address, :building_number, :neighborhood, :city_id, :state_id, :zipcode,

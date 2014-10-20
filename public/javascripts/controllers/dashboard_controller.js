@@ -1,3 +1,3 @@
-publimasterApp.controller('DashboardCtrl', function($scope) {
-  $scope.menu_active = "dashboard";
-});
+publimasterApp.controller('DashboardCtrl', ["$scope", "NavBarService", function($scope, NavBarService) {
+  NavBarService.setMenu( "dashboard" );
+}]);
