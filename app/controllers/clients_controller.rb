@@ -16,8 +16,11 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new( client_params )
-    @client.save
-    render json: @client
+    if @client.save
+      render json: @client, status: 200
+    else
+      render json: @client.errors, status: 422
+    end
   end
 
   def destroy

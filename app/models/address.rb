@@ -9,4 +9,12 @@ class Address < ActiveRecord::Base
   accepts_nested_attributes_for :contact_emails, allow_destroy: true
   accepts_nested_attributes_for :contact_phones, allow_destroy: true
 
+  validates :street_address,
+            :street_suffix,
+            :building_number,
+            :city,
+            :state,
+            :zipcode,
+            presence: true
+
 end

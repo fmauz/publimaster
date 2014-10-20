@@ -5,4 +5,12 @@ class Client < ActiveRecord::Base
   belongs_to :employee
 
   accepts_nested_attributes_for :address
+
+  validates :name,
+            :cpf_cnpj,
+            :client_type,
+            :address,
+            :segment,
+            :employee,
+            presence: true
 end

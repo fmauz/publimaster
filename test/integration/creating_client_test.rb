@@ -70,17 +70,17 @@ class CreatingClientTest < ActionDispatch::IntegrationTest
       assert_equal objectCreated[:client][:client_group], client_object.client_group
       assert_equal objectCreated[:client][:observation], client_object.observation
 
-      assert_equal objectCreated[:client][:client_type_id], client_object.client_type_id
-      assert_equal objectCreated[:client][:segment_id], client_object.segment_id
-      assert_equal objectCreated[:client][:employee_id], client_object.employee_id
+      assert_equal objectCreated[:client][:client_type_id], client_object.client_type.id
+      assert_equal objectCreated[:client][:segment_id], client_object.segment.id
+      assert_equal objectCreated[:client][:employee_id], client_object.employee.id
 
-      assert_equal objectCreated[:client][:address][:street_suffix_id], client_object.address.street_suffix_id
+      assert_equal objectCreated[:client][:address][:street_suffix_id], client_object.address.street_suffix.id
       assert_equal objectCreated[:client][:address][:street_address], client_object.address.street_address
       assert_equal objectCreated[:client][:address][:secondary_address], client_object.address.secondary_address
       assert_equal objectCreated[:client][:address][:building_number], client_object.address.building_number
       assert_equal objectCreated[:client][:address][:neighborhood], client_object.address.neighborhood
-      assert_equal objectCreated[:client][:address][:city_id], client_object.address.city_id
-      assert_equal objectCreated[:client][:address][:state_id], client_object.address.state_id
+      assert_equal objectCreated[:client][:address][:city_id], client_object.address.city.id
+      assert_equal objectCreated[:client][:address][:state_id], client_object.address.state.id
       assert_equal objectCreated[:client][:address][:zipcode], client_object.address.zipcode
 
       assert_equal objectCreated[:client][:address][:contact_phones].size-1, client_object.address.contact_phones.length
@@ -94,5 +94,29 @@ class CreatingClientTest < ActionDispatch::IntegrationTest
 
       assert_equal objectCreated[:client][:address][:contact_emails][1][:email], client_object.address.contact_emails[0].email
       assert_equal objectCreated[:client][:address][:contact_emails][1][:contact], client_object.address.contact_emails[0].contact
+    end
+
+    test "creating a new client with a invalid params" do
+      invalidObject = { client: { observation: Faker::Lorem.paragraph(2), address: { neighborhood: "Neighborhood" } } }
+      post "/clients", invalidObject, {}
+
+      assert_equal 422, response.status
+      assert_equal Mime::JSON, response.content_type
+
+      jsonObject = json( response.body )
+
+      assert jsonObject["name"].include? "can't be blank"
+      assert jsonObject["cpf_cnpj"].include? "can't be blank"
+      assert jsonObject["employee"].include? "can't be blank"
+      assert jsonObject["segment"].include? "can't be blank"
+      assert jsonObject["client_type"].include? "can't be blank"
+
+      assert jsonObject["address.street_suffix"].include? "can't be blank"
+      assert jsonObject["address.street_address"].include? "can't be blank"
+      assert jsonObject["address.building_number"].include? "can't be blank"
+      assert jsonObject["address.city"].include? "can't be blank"
+      assert jsonObject["address.state"].include? "can't be blank"
+      assert jsonObject["address.zipcode"].include? "can't be blank"
+
     end
   end
