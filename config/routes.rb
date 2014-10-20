@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :client_types
   resources :segments
   resources :employees
+  resources :states
 end
