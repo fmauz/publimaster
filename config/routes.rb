@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :street_suffixes
   resources :client_types
   resources :segments
+  resources :employees
 end
