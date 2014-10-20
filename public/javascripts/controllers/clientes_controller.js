@@ -11,11 +11,11 @@ publimasterApp.controller('ClientesCtrl', [ "$scope", "$routeParams", "Client", 
   $scope.states = [];
 
   $scope.update = function(){
-    console.log( $scope.client );
+    $scope.client.update();
   }
 
-  $scope.changeNode = function(list, object){
-    var item = _.findWhere( list, { id: object.id });
+  $scope.changeNode = function(list, object, id){
+    var item = _.findWhere( list, { id: id });
     angular.extend( object, item );
   }
 

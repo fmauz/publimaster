@@ -1,11 +1,13 @@
 class AddressSerializer < ActiveModel::Serializer
   attributes :id,
-  			 :street_suffix,
-  			 :address,
+  			 :street_suffix_id,
+  			 :street_address,
   			 :secondary_address,
   			 :building_number,
   			 :neighborhood,
-  			 :zipcode
+  			 :zipcode,
+         :city_id,
+         :state_id
 
   has_one :street_suffix
   has_one :city

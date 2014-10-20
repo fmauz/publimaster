@@ -2,7 +2,7 @@ class CreateAddresses < ActiveRecord::Migration
   def change
     create_table :addresses do |t|
 
-      t.string :address
+      t.string :street_address
       t.string :secondary_address
       t.string :building_number
       t.string :neighborhood

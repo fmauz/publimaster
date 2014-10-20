@@ -32,3 +32,4 @@ gem "active_model_serializers", "~> 0.8.0"
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'pry'

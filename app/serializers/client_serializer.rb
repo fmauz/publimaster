@@ -6,7 +6,10 @@ class ClientSerializer < ActiveModel::Serializer
   			 :director, 
   			 :accountant, 
   			 :client_group, 
-  			 :observation
+  			 :observation,
+         :client_type_id,
+         :segment_id,
+         :employee_id
 
   has_one :client_type
   has_one :segment

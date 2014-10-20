@@ -1,7 +1,7 @@
 FactoryGirl.define do
 	factory :address do
 		street_suffix
-		address Faker::Address.street_address
+		street_address Faker::Address.street_address
 		secondary_address Faker::Address.secondary_address
 		building_number Faker::Address.building_number
 		neighborhood "Neighborhood Example"

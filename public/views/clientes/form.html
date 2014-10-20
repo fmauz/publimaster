@@ -11,7 +11,7 @@
 <div class="form-group">
   <label class="col-sm-2 control-label" for="field-1">Identificação</label>
   <div class="col-sm-3">
-    <select class="form-control" ng-change="changeNode(client_types, client.clientType)" ng-model="client.clientType.id" ng-options="client_type.id as client_type.name for client_type in client_types">
+    <select class="form-control" ng-change="changeNode(client_types, client.clientType, client.clientTypeId)" ng-model="client.clientTypeId" ng-options="client_type.id as client_type.name for client_type in client_types">
     </select>
   </div>
 
@@ -24,11 +24,11 @@
 <div class="form-group">
   <label class="col-sm-2 control-label">Endereço</label>
   <div class="col-sm-2">
-    <select class="form-control" ng-change="changeNode(street_suffixes, client.address.streetSuffix)" ng-model="client.address.streetSuffix.id" ng-options="street_suffix.id as street_suffix.name for street_suffix in street_suffixes">
+    <select class="form-control" ng-change="changeNode(street_suffixes, client.address.streetSuffix, client.address.streetSuffixId)" ng-model="client.address.streetSuffixId" ng-options="street_suffix.id as street_suffix.name for street_suffix in street_suffixes">
     </select>
   </div>
   <div class="col-sm-4">
-    <input type="text" class="form-control" ng-model="client.address.address" placeholder="Endereço">
+    <input type="text" class="form-control" ng-model="client.address.streetAddress" placeholder="Endereço">
   </div>
   <div class="col-sm-2">
     <input type="text" class="form-control" ng-model="client.address.buildingNumber" placeholder="Número">
@@ -43,11 +43,11 @@
     <input type="text" class="form-control" ng-model="client.address.neighborhood"  placeholder="Bairro">
   </div>
   <div class="col-sm-2">
-    <select class="form-control" ng-change="changeNode(client.address.state.cities, client.address.city)" ng-model="client.address.city.id" ng-options="city.id as city.name for city in client.address.state.cities">
+    <select class="form-control" ng-change="changeNode(client.address.state.cities, client.address.city, client.address.cityId)" ng-model="client.address.cityId" ng-options="city.id as city.name for city in client.address.state.cities">
     </select>
   </div>
   <div class="col-sm-2">
-    <select class="form-control" ng-change="changeNode(states, client.address.state)" ng-model="client.address.state.id" ng-options="state.id as state.name for state in states">
+    <select class="form-control" ng-change="changeNode(states, client.address.state, client.address.stateId)" ng-model="client.address.stateId" ng-options="state.id as state.name for state in states">
     </select>
   </div>
   <div class="col-sm-2">
@@ -72,7 +72,7 @@
     <div class="col-sm-1">
       <div class="checkbox">
         <label>
-          <input type="checkbox" ng-model="contact_phone.isFax" ng-true-value="'1'" ng-false-value="'0'">
+          <input type="checkbox" ng-model="contact_phone.isFax" >
           Fax
         </label>
       </div>
@@ -118,7 +118,7 @@
 <div class="form-group">
   <label class="col-sm-2 control-label" for="field-1">Segmento</label>
   <div class="col-sm-10">
-    <select class="form-control" ng-change="changeNode(segments, client.segment)" ng-model="client.segment.id" ng-options="segment.id as segment.name for segment in segments">
+    <select class="form-control" ng-change="changeNode(segments, client.segment, client.segmentId)" ng-model="client.segmentId" ng-options="segment.id as segment.name for segment in segments">
     </select>
   </div>
 </div>
@@ -149,7 +149,7 @@
 <div class="form-group">
   <label class="col-sm-2 control-label" for="field-1">Grupo</label>
   <div class="col-sm-10">
-    <input type="text" class="form-control" ng-model="client.group" />
+    <input type="text" class="form-control" ng-model="client.clientGroup" />
   </div>
 </div>
 
@@ -158,7 +158,7 @@
 <div class="form-group">
   <label class="col-sm-2 control-label" for="field-1">Funcionário</label>
   <div class="col-sm-10">
-    <select class="form-control" ng-change="changeNode(employees, client.employee)" ng-model="client.employee.id" ng-options="employee.id as employee.name for employee in employees">
+    <select class="form-control" ng-change="changeNode(employees, client.employee, client.employeeId)" ng-model="client.employeeId" ng-options="employee.id as employee.name for employee in employees">
     </select>
   </div>
 </div>

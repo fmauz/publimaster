@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20141019211221) do
 
   create_table "addresses", force: true do |t|
-    t.string   "address"
+    t.string   "street_address"
     t.string   "secondary_address"
     t.string   "building_number"
     t.string   "neighborhood"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20141019211221) do
     t.string   "area_code"
     t.string   "phone_number"
     t.string   "extension"
-    t.string   "is_fax"
+    t.boolean  "is_fax"
     t.integer  "address_id"
     t.datetime "created_at"
     t.datetime "updated_at"

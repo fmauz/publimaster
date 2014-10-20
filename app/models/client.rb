@@ -3,4 +3,6 @@ class Client < ActiveRecord::Base
   belongs_to :address
   belongs_to :segment
   belongs_to :employee
+
+  accepts_nested_attributes_for :address
 end

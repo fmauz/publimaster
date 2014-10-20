@@ -4,7 +4,7 @@ class CreateContactPhones < ActiveRecord::Migration
       t.string :area_code
       t.string :phone_number
       t.string :extension
-      t.string :is_fax
+      t.boolean :is_fax
       t.references :address, index: true
 
       t.timestamps
