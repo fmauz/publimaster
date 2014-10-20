@@ -5,7 +5,7 @@ class ShowClientTest < ActionDispatch::IntegrationTest
   	@client = FactoryGirl.create( :client )
   end
 
-  test "listing all clients" do
+  test "show client informations" do
   	get "/clients/#{@client.id}"
 
   	assert_equal 200, response.status

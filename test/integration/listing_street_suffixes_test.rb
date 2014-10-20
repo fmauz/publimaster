@@ -5,7 +5,7 @@ class ListingStreetSuffixesTest < ActionDispatch::IntegrationTest
     FactoryGirl.create_list( :street_suffix, 2 )
   end
 
-  test "listing all clients" do
+  test "listing all street suffixes" do
     get '/street_suffixes'
 
     assert_equal 200, response.status

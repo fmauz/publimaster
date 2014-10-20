@@ -5,7 +5,7 @@ class ListingSegmentsTest < ActionDispatch::IntegrationTest
     FactoryGirl.create_list( :segment, 2 )
   end
 
-  test "listing all clients" do
+  test "listing all segments" do
     get '/segments'
 
     assert_equal 200, response.status

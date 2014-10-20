@@ -5,7 +5,7 @@ class ListingClientTypeTest < ActionDispatch::IntegrationTest
     FactoryGirl.create_list( :client_type, 2 )
   end
 
-  test "listing all clients" do
+  test "listing all client types" do
     get '/client_types'
 
     assert_equal 200, response.status

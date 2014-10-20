@@ -6,7 +6,6 @@
   </div>
 </div>
 
-
 <div class="form-group-separator"></div>
 
 <div class="form-group">
@@ -70,44 +69,21 @@
 
 <div class="form-group-separator"></div>
 
-<div class="form-group">
-  <label class="col-sm-2 control-label" for="field-1">Telefones</label>
+<div class="form-group" ng-repeat="contact_phone in client.address.contactPhones">
+  <label class="col-sm-2 control-label" for="field-1">Telefone</label>
   <div class="col-sm-1">
-    <input type="text" class="form-control" placeholder="DDD">
+    <input type="text" class="form-control" ng-model="contact_phone.areaCode" placeholder="DDD">
   </div>
   <div class="col-sm-2">
-    <input type="text" class="form-control" placeholder="Telefone">
+    <input type="text" class="form-control" ng-model="contact_phone.phoneNumber" placeholder="Telefone">
   </div>
   <div class="col-sm-3">
-    <input type="text" class="form-control" placeholder="Ramal">
+    <input type="text" class="form-control" ng-model="contact_phone.extension" placeholder="Ramal">
   </div>
   <div class="col-sm-1">
     <div class="checkbox">
       <label>
-        <input type="checkbox">
-        Fax
-      </label>
-    </div>
-  </div>
-  <div class="col-sm-offset-1 col-sm-2">
-    <button class="btn btn-danger btn-single">Remover</button>
-  </div>
-</div>
-
-<div class="form-group">
-  <div class="col-sm-offset-2 col-sm-1">
-    <input type="text" class="form-control" placeholder="DDD">
-  </div>
-  <div class="col-sm-2">
-    <input type="text" class="form-control" placeholder="Telefone">
-  </div>
-  <div class="col-sm-3">
-    <input type="text" class="form-control" placeholder="Ramal">
-  </div>
-  <div class="col-sm-1">
-    <div class="checkbox">
-      <label>
-        <input type="checkbox">
+        <input type="checkbox" ng-model="contact_phone.is_fax" ng-true-value="1" ng-false-value="0">
         Fax
       </label>
     </div>
@@ -124,3 +100,82 @@
 </div>
 
 <div class="form-group-separator"></div>
+
+
+<div class="form-group" ng-repeat="contact_email in client.address.contactEmails">
+  <label class="col-sm-2 control-label" for="field-1">Email</label>
+  <div class="col-sm-4">
+    <input type="text" class="form-control" ng-model="contact_email.email" placeholder="Email">
+  </div>
+  <div class="col-sm-4">
+    <input type="text" class="form-control" ng-model="contact_email.contact" placeholder="Contato">
+  </div>
+  <div class="col-sm-2">
+    <button class="btn btn-danger btn-single">Remover</button>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-3">
+    <button class="btn btn-secondary btn-single">Adicionar novo Email</button>
+  </div>
+</div>
+
+<div class="form-group-separator"></div>
+
+<div class="form-group">
+  <label class="col-sm-2 control-label" for="field-1">Segmento</label>
+  <div class="col-sm-10">
+    <select class="form-control" ng-model="client.segment.id" ng-options="segment.id as segment.name for segment in segments">
+    </select>
+  </div>
+</div>
+
+<div class="form-group-separator"></div>
+
+<div class="form-group">
+  <label class="col-sm-2 control-label" for="field-1">Responsável</label>
+    <div class="col-sm-10">
+    <input type="text" class="form-control" ng-model="client.responsible" />
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2 control-label" for="field-1">Diretor</label>
+    <div class="col-sm-10">
+    <input type="text" class="form-control" ng-model="client.director" />
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2 control-label" for="field-1">Contador</label>
+    <div class="col-sm-10">
+    <input type="text" class="form-control" ng-model="client.accountant" />
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2 control-label" for="field-1">Grupo</label>
+    <div class="col-sm-10">
+    <input type="text" class="form-control" ng-model="client.group" />
+  </div>
+</div>
+
+<div class="form-group-separator"></div>
+
+<div class="form-group">
+  <label class="col-sm-2 control-label" for="field-1">Funcionário</label>
+  <div class="col-sm-10">
+    <select class="form-control" ng-model="client.employee.id" ng-options="employee.id as employee.name for employee in employees">
+    </select>
+  </div>
+</div>
+
+<div class="form-group-separator"></div>
+
+<div class="form-group">
+  <label class="col-sm-2 control-label" for="field-1">Observações</label>
+    <div class="col-sm-10">
+    <textarea class="form-control" ng-model="client.observation" rows="5"></textarea>
+  </div>
+</div>

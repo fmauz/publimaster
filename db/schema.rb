@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20141019211221) do
 
   create_table "contact_phones", force: true do |t|
     t.string   "area_code"
-    t.string   "phone_numer"
+    t.string   "phone_number"
     t.string   "extension"
     t.string   "is_fax"
     t.integer  "address_id"
