@@ -1,5 +1,5 @@
 class StatesController < ApplicationController
   def index
-    render json: State.all, code: 200
+    render json: State.all, status: 200
   end
 end
