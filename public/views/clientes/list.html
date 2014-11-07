@@ -1,90 +1,92 @@
-<div class="col-md-12">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Gerenciamento de Clientes</h3>
-    </div>
-    <div class="panel-body">
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Gerenciamento de Clientes</h3>
+      </div>
+      <div class="panel-body">
 
-      <div class="table-wrapper">
-        <div class="btn-toolbar">
-          <div class="btn-group focus-btn-group">
-            <a href="#/clientes/new" class="btn btn-default"><span class="fa-plus-circle"></span> Inserir novo registro</a>
-          </div>
-        </div>
-
-        <div class="row" ng-if="clients.length==0">
-          <div class="col-md-12">
-            <div class="alert alert-info text-center">
-              Nenhum registro encontrado, para inserir um novo registro clique no botão acima.
+        <div class="table-wrapper" ng-if="show_info">
+          <div class="btn-toolbar">
+            <div class="btn-group focus-btn-group">
+              <a href="#/clientes/new" class="btn btn-default"><span class="fa-plus-circle"></span> Inserir novo registro</a>
             </div>
           </div>
-        </div>
 
-        <div class="table-responsive" ng-if="clients.length > 0">
-          <table cellspacing="0" class="table table-small-font table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>CNPJ/CPF</th>
-                <th>Segmento</th>
-                <th>Telefone</th>
-                <th>Atendimento</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody> 
-              <tr ng-repeat="client in clients">
-                <th>{{ client.id }}</th>
-                <td>{{ client.name }}</td>
-                <td>{{ client.cpfCnpj }}</td>
-                <td>{{ client.segment.name }}</td>
-                <td><span ng-if="client.address.contactPhones.length > 0">
-                    {{ client.address.contactPhones[0].phoneNumber }}
-                    </span></td>
-                <td>{{client.employee.name}}</td>
-                <td>
-                  <a href="#/clientes/{{client.id}}/edit" class="btn btn-secondary btn-sm btn-icon icon-left">Editar</a>
-                  <a href="" ng-click="destroy( client );" class="btn btn-danger btn-sm btn-icon icon-left">Excluir</a>
-                  <a href="#/clientes/{{client.id}}" class="btn btn-info btn-sm btn-icon icon-left">Visualizar</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-        </div>
-      </div>
-
-      <div class="row" ng-if="clients.length > 0">
-            <div class="col-xs-12 text-center">
-              <div class="dataTables_paginate paging_simple_numbers">
-                <ul class="pagination">
-                  <li class="paginate_button previous disabled" tabindex="0">
-                    <a href="#">Anterior</a>
-                  </li>
-                  <li class="paginate_button active" tabindex="0"><a href="#">1</a></li>
-                  <li class="paginate_button " tabindex="0"><a href="#">2</a></li>
-                  <li class="paginate_button " tabindex="0"><a href="#">3</a></li>
-                  <li class="paginate_button " tabindex="0"><a href="#">4</a></li>
-                  <li class="paginate_button " tabindex="0"><a href="#">5</a></li>
-                  <li class="paginate_button next" tabindex="0" ><a href="#">Próximo</a></li>
-                </ul>
+          <div class="row" ng-if="clients.length==0">
+            <div class="col-md-12">
+              <div class="alert alert-info text-center">
+                Nenhum registro encontrado, para inserir um novo registro clique no botão acima.
               </div>
             </div>
           </div>
 
-      <script type="text/javascript">
-      // This JavaScript Will Replace Checkboxes in dropdown toggles
-      jQuery(document).ready(function($)
-      {
-        setTimeout(function()
-        {
-          $(".checkbox-row input").addClass('cbr');
-          cbr_replace();
-        }, 0);
-      });
-      </script>
+          <div class="table-responsive" ng-if="clients.length > 0">
+            <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Nome</th>
+                  <th>CNPJ/CPF</th>
+                  <th>Segmento</th>
+                  <th>Telefone</th>
+                  <th>Atendimento</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody> 
+                <tr ng-repeat="client in clients">
+                  <th>{{ client.id }}</th>
+                  <td>{{ client.name }}</td>
+                  <td>{{ client.cpfCnpj }}</td>
+                  <td>{{ client.segment.name }}</td>
+                  <td><span ng-if="client.address.contactPhones.length > 0">
+                      {{ client.address.contactPhones[0].phoneNumber }}
+                      </span></td>
+                  <td>{{client.employee.name}}</td>
+                  <td>
+                    <a href="#/clientes/{{client.id}}/edit" class="btn btn-secondary btn-sm btn-icon icon-left">Editar</a>
+                    <a href="" ng-click="destroy( client );" class="btn btn-danger btn-sm btn-icon icon-left">Excluir</a>
+                    <a href="#/clientes/{{client.id}}" class="btn btn-info btn-sm btn-icon icon-left">Visualizar</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
+          </div>
+        </div>
+
+        <div class="row" ng-if="clients.length > 0">
+              <div class="col-xs-12 text-center">
+                <pagination 
+                  items-per-page="pagination.perPage"
+                  ng-change="pageChanged()"
+                  total-items="pagination.totalItems" 
+                  ng-model="pagination.currentPage" 
+                  max-size="pagination.maxSize" 
+                  class="dataTables_paginate paging_simple_numbers" 
+                  boundary-links="true"
+                  previous-text="Anterior"
+                  next-text="Próximo"
+                  first-text="Primeiro"
+                  last-text="Último">
+                </pagination>
+              </div>
+            </div>
+
+        <script type="text/javascript">
+        // This JavaScript Will Replace Checkboxes in dropdown toggles
+        jQuery(document).ready(function($)
+        {
+          setTimeout(function()
+          {
+            $(".checkbox-row input").addClass('cbr');
+            cbr_replace();
+          }, 0);
+        });
+        </script>
+
+      </div>
     </div>
   </div>
 </div>

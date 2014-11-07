@@ -1,1 +1,1 @@
-FactoryGirl.create_list( :client, 20 )
+FactoryGirl.create_list( :client, 150 )

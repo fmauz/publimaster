@@ -118,5 +118,7 @@ class CreatingClientTest < ActionDispatch::IntegrationTest
       assert jsonObject["address.state"].include? "can't be blank"
       assert jsonObject["address.zipcode"].include? "can't be blank"
 
+      # Não pode ter CPF ou CNPJ duplicados
+
     end
   end

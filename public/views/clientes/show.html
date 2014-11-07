@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{client.name}} - {{client.cpfCnpj}}</h3>
+      </div>
+      <div class="panel-body">
+
+        <ul class="list-unstyled user-info-list">
+          <li><strong>Endereço</strong></li>
+          <li><i class="fa-home"></i> {{client.address.streetSuffix.name}} {{client.address.streetAddress}}, {{client.address.buildingNumber}}
+          {{client.address.secondaryAddress}}, {{client.address.neighborhood}}, {{client.address.city.name}}, {{client.address.state.name}},
+          {{client.address.zipcode}} </li>
+          
+          <li><strong>Telefones</strong></li>
+          <li ng-repeat="contact_phone in client.address.contactPhones">
+            <i class="fa-phone"></i> ({{contact_phone.areaCode}}) {{contact_phone.phoneNumber}} {{contact_phone.extension}}
+          </li>
+
+          <li><strong>Emails</strong></li>
+          <li ng-repeat="contact_email in client.address.contactEmails">
+            <a href="mailto:{{contact_email.email}}"><i class="fa-envelope-o"></i> {{contact_email.email}} <{{contact_email.contact}}></a>
+          </li>
+
+          <li><strong>Segmento:</strong> {{client.segment.name}}</li>
+          <li><strong>Diretor:</strong> {{client.director}}</li>
+          <li><strong>Contador:</strong> {{client.accountant}}</li>
+          <li><strong>Grupo:</strong> {{client.clientGroup}}</li>
+          <li><strong>Funcionário:</strong> {{client.employee.name}}</li>
+
+          <li><strong>Observação:</strong> {{client.observation}}</li>
+        </ul>
+
+        <a href="javascript:history.back(-1)" class="btn btn-large btn-info">Voltar para listagem</a>
+      </div>
+    </div>
+  </div>
+</div>

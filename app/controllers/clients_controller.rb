@@ -1,6 +1,8 @@
 class ClientsController < ApplicationController
   def index
-  	render json: Client.all
+    @clients = Client.all.paginate page: params[:page]
+    set_header_pagination( @clients )
+  	render json: @clients    
   end
 
   def show

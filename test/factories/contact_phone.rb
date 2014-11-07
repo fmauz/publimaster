@@ -1,8 +1,8 @@
 FactoryGirl.define do
 	factory :contact_phone do
 		address
-		area_code { Faker::PhoneNumber.area_code }
-		phone_number { Faker::PhoneNumber.phone_number }
+		area_code { 21 }
+		phone_number { Faker::Number.number(9) }
 		extension { Faker::PhoneNumber.extension }
 		is_fax true
 	end
