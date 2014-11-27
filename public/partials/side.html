@@ -42,6 +42,60 @@
               <span class="title">Clientes</span>
             </a>
           </li>
+
+          <li ng-class="{active: menu.is('funcionarios')}">
+            <a href="#/funcionarios">
+              <i class="linecons-t-shirt"></i>
+              <span class="title">Funcionarios</span>
+            </a>
+          </li>
+
+          <li class="has-sub">
+            <a href="#/clientes">
+              <i class="linecons-params"></i>
+              <span class="title">Configurações</span>
+            </a>
+
+            <ul>
+              <li ng-class="{active: menu.is('jornais')}">
+                <a href="#/jornais">
+                  <span class="title">Jornais</span>
+                </a>
+              </li>
+
+              <li ng-class="{active: menu.is('diarios_oficiais')}">
+                <a href="#/diarios_oficiais">
+                  <span class="title">Diarios Oficiais</span>
+                </a>
+              </li>
+
+              <li ng-class="{active: menu.is('materiais')}">
+                <a href="#/materiais">
+                  <span class="title">Materiais</span>
+                </a>
+              </li>
+
+              <li ng-class="{active: menu.is('segmentos')}">
+                <a href="#/segmentos">
+                  <span class="title">Segmentos</span>
+                </a>
+              </li>
+
+              <li ng-class="{active: menu.is('publicacoes')}">
+                <a href="#/publicacoes">
+                  <span class="title">Publicações</span>
+                </a>
+              </li>
+
+              <li ng-class="{active: menu.is('retrancas')}">
+                <a href="#/retrancas">
+                  <span class="title">Retrancas</span>
+                </a>
+              </li>
+            </ul>
+          </li>          
+
+
         </ul>
             
       </div>

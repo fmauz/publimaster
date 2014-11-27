@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Gerenciamento de Publicações</h3>
+      </div>
+    
+      <div class="panel-body">
+        <div class="table-wrapper" ng-if="show_info">
+          <div class="btn-toolbar">
+            <div class="btn-group focus-btn-group">
+              <a href="#/publicacoes/new" class="btn btn-default"><span class="fa-plus-circle"></span> Inserir novo registro</a>
+            </div>
+          </div>
+
+          <div class="row" ng-if="publicacoes.length==0">
+            <div class="col-md-12">
+              <div class="alert alert-info text-center">Nenhum registro encontrado, para inserir um novo registro clique no botão acima.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
