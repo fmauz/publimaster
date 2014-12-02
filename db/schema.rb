@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202132106) do
+ActiveRecord::Schema.define(version: 20141202145655) do
 
   create_table "addresses", force: true do |t|
     t.string   "street_address"
@@ -87,6 +87,26 @@ ActiveRecord::Schema.define(version: 20141202132106) do
   end
 
   add_index "contact_phones", ["address_id"], name: "index_contact_phones_on_address_id", using: :btree
+
+  create_table "diario_oficials", force: true do |t|
+    t.string   "name"
+    t.text     "observation"
+    t.integer  "state_id"
+    t.string   "contact"
+    t.string   "schedule"
+    t.string   "source"
+    t.string   "body"
+    t.string   "lead"
+    t.float    "column",       limit: 24
+    t.float    "height",       limit: 24
+    t.float    "width",        limit: 24
+    t.integer  "column_count"
+    t.float    "column_width", limit: 24
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "diario_oficials", ["state_id"], name: "index_diario_oficials_on_state_id", using: :btree
 
   create_table "employees", force: true do |t|
     t.string   "name"

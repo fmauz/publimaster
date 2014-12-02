@@ -36,6 +36,34 @@
             </a>
           </li>
 
+          <li ng-class="{active: menu.is('atendimentos')}">
+            <a href="#/clientes">
+              <i class="linecons-comment"></i>
+              <span class="title">Atendimento</span>
+            </a>
+          </li>
+
+          <li ng-class="{active: menu.is('diagramacao')}">
+            <a href="#/clientes">
+              <i class="linecons-doc"></i>
+              <span class="title">Diagramação</span>
+            </a>
+          </li>
+
+          <li ng-class="{active: menu.is('revisao')}">
+            <a href="#/clientes">
+              <i class="linecons-eye"></i>
+              <span class="title">Revisão</span>
+            </a>
+          </li>
+
+          <li ng-class="{active: menu.is('midia')}">
+            <a href="#/clientes">
+              <i class="linecons-inbox"></i>
+              <span class="title">Mídia</span>
+            </a>
+          </li>
+
           <li ng-class="{active: menu.is('clientes')}">
             <a href="#/clientes">
               <i class="linecons-user"></i>
@@ -43,20 +71,20 @@
             </a>
           </li>
 
-          <li ng-class="{active: menu.is('funcionarios')}">
-            <a href="#/funcionarios">
-              <i class="linecons-t-shirt"></i>
-              <span class="title">Funcionarios</span>
-            </a>
-          </li>
-
           <li class="has-sub">
-            <a href="#/clientes">
+            <a href="">
               <i class="linecons-params"></i>
-              <span class="title">Configurações</span>
+              <span class="title">Administração</span>
             </a>
 
             <ul>
+
+              <li ng-class="{active: menu.is('funcionarios')}">
+                <a href="#/funcionarios">
+                  <span class="title">Funcionarios</span>
+                </a>
+              </li>
+
               <li ng-class="{active: menu.is('jornais')}">
                 <a href="#/jornais">
                   <span class="title">Jornais</span>
@@ -95,6 +123,38 @@
             </ul>
           </li>          
 
+          <li class="has-sub">
+            <a href="">
+              <i class="linecons-cog"></i>
+              <span class="title">Configurações</span>
+            </a>
+
+            <ul>
+              <li ng-class="{active: menu.is('logradouros')}">
+                <a href="#/funcionarios">
+                  <span class="title">Logradouros</span>
+                </a>
+              </li>
+
+              <li ng-class="{active: menu.is('logradouros')}">
+                <a href="#/funcionarios">
+                  <span class="title">Estados</span>
+                </a>
+              </li>
+
+              <li ng-class="{active: menu.is('logradouros')}">
+                <a href="#/funcionarios">
+                  <span class="title">Tipos de cliente</span>
+                </a>
+              </li>
+              
+              <li ng-class="{active: menu.is('logradouros')}">
+                <a href="#/funcionarios">
+                  <span class="title">Grupos de Usuários</span>
+                </a>
+              </li>
+            </ul>
+          </li>
 
         </ul>
             

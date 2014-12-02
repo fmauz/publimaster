@@ -1,6 +1,25 @@
-publimasterApp.controller('DiariosOficiaisCtrl', [ "$scope", "$routeParams", "$location", "NavBarService", "type", function($scope, $routeParams, $location, NavBarService, type){
+publimasterApp.controller('DiariosOficiaisCtrl', [ "$scope", "$routeParams", "$location", "NavBarService", "type", "DiarioOficial", "State", "Crud", function($scope, $routeParams, $location, NavBarService, type, DiarioOficial, State, Crud){
   NavBarService.setMenu( "diarios_oficiais" );
-  $scope.show_info = true;
-  $scope.diarios_oficiais = [];
-  $scope.pagination = { perPage:0, totalItems: 0, currentPage: parseInt($routeParams.page) || 1 , maxSize: 7 };
+
+  Crud.init( $scope, $routeParams, $location, "diarios_oficiais", DiarioOficial );
+
+  switch( type ){
+    case "list":
+      $scope.list();
+      break;
+
+    case "new":
+    case "edit":
+      State.query().then(function(results){
+        $scope.states = results;
+      });
+      
+    case "show":
+      $scope.findByParamId();
+      break;
+    default:
+      $location.path("/diarios_oficiais");
+      break;
+  }
+
 }])

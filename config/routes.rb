@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :employees
   resources :states
   resources :jornals
+  resources :diario_oficials
 end
