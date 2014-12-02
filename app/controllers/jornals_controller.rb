@@ -20,6 +20,12 @@ class JornalsController < ApplicationController
     end
   end
 
+  def destroy
+    @jornal = Jornal.find( params[:id] )
+    @jornal.destroy
+    render json: @jornal
+  end
+
   def show
     @jornal = Jornal.find( params[:id] )
     render json: @jornal
