@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :segments
   resources :employees
   resources :states
+  resources :jornals
 end
