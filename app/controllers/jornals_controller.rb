@@ -5,6 +5,12 @@ class JornalsController < ApplicationController
     render json: @jornals  
   end
 
+  def update
+    @jornal = Jornal.find( params[:id] )
+    @jornal.update( jornal_params )
+    render json: @jornal
+  end
+
   def create
     @jornal = Jornal.new( jornal_params )
     if @jornal.save
