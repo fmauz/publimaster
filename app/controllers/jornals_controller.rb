@@ -14,6 +14,11 @@ class JornalsController < ApplicationController
     end
   end
 
+  def show
+    @jornal = Jornal.find( params[:id] )
+    render json: @jornal
+  end
+
   def jornal_params
     params.require( :jornal ).permit( :name, :contact, :observation, :state_id )
   end
