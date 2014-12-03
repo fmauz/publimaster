@@ -3,8 +3,9 @@ FactoryGirl.define do
     name { Faker::Company.name }
     observation { Faker::Lorem.paragraph(2) }
     contact { Faker::Name.name }
-    state
 
+    state
+    
     schedule "00:00"
     source "Fonte"
     body "Corpo"
