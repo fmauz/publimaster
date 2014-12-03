@@ -1,5 +1,5 @@
 FactoryGirl.define do
 	factory :segment do
-		name "Segment Name"
+		name { Faker::Company.name }
 	end
 end

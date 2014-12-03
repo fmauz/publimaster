@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :states
   resources :jornals
   resources :diario_oficials
+  resources :materials
 end
