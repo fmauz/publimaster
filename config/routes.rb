@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :jornals
   resources :diario_oficials
   resources :materials
+  resources :retrancas
 end

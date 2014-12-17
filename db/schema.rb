@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203132644) do
+ActiveRecord::Schema.define(version: 20141217183131) do
 
   create_table "addresses", force: true do |t|
     t.string   "street_address"
@@ -141,6 +141,20 @@ ActiveRecord::Schema.define(version: 20141203132644) do
 
   create_table "materials", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "retrancas", force: true do |t|
+    t.string   "name"
+    t.string   "source"
+    t.string   "body"
+    t.string   "lead"
+    t.float    "column",       limit: 24
+    t.float    "width",        limit: 24
+    t.float    "height",       limit: 24
+    t.integer  "column_count"
+    t.integer  "column_width"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{model.name}}</h3>
+      </div>
+      <div class="panel-body">
+
+        <ul class="list-unstyled user-info-list">
+          <li><strong>Fonte:</strong> {{model.source}}</li>
+          <li><strong>Corpo:</strong> {{model.body}}</li>
+          <li><strong>Entrelinhas:</strong> {{model.lead}}</li>
+          <li><strong>Colunagem:</strong> {{model.column}}</li>
+          <li><strong>Formato:</strong> {{model.width}} x {{model.height}}</li>
+
+          <li><strong>N° de Colunas:</strong> {{model.columnCount}}</li>
+          <li><strong>Largura das Colunas:</strong> {{model.columnWidth}}</li>
+
+        </ul>
+
+        <a href="javascript:history.back(-1)" class="btn btn-large btn-info">Voltar para listagem</a>
+      </div>
+    </div>
+  </div>
+</div>
