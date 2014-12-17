@@ -1,5 +1,5 @@
 publimasterApp.controller('MateriaisCtrl', [ "$scope", "$routeParams", "$location", "NavBarService", "type", "Material", "Crud", function($scope, $routeParams, $location, NavBarService, type, Material, Crud){
-  NavBarService.setMenu( "materials" );
+  NavBarService.setMenu( "materiais" );
 
   Crud.init( $scope, $routeParams, $location, "materiais", Material );
 
