@@ -5,6 +5,11 @@ class MaterialsController < ApplicationController
     render json: @materials
   end
 
+  def show
+    @material = Material.find( params[:id] )
+    render json: @material
+  end
+
   def create
     @material = Material.new( material_params )
     if @material.save

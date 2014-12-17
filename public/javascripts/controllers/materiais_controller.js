@@ -1,6 +1,21 @@
-publimasterApp.controller('MateriaisCtrl', [ "$scope", "$routeParams", "$location", "NavBarService", "type", function($scope, $routeParams, $location, NavBarService, type){
-  NavBarService.setMenu( "materiais" );
-  $scope.show_info = true;
-  $scope.materiais = [];
-  $scope.pagination = { perPage:0, totalItems: 0, currentPage: parseInt($routeParams.page) || 1 , maxSize: 7 };
+publimasterApp.controller('MateriaisCtrl', [ "$scope", "$routeParams", "$location", "NavBarService", "type", "Material", "Crud", function($scope, $routeParams, $location, NavBarService, type, Material, Crud){
+  NavBarService.setMenu( "materials" );
+
+  Crud.init( $scope, $routeParams, $location, "materiais", Material );
+
+  switch( type ){
+    case "list":
+      $scope.list();
+      break;
+
+    case "new":
+    case "edit":
+    case "show":
+      $scope.findByParamId();
+      break;
+    default:
+      $location.path("/materiais");
+      break;
+  }
+
 }])
