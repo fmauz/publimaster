@@ -50,6 +50,15 @@ publimasterApp.config([ '$routeProvider', '$httpProvider', function($routeProvid
     templateUrl: '/users/login.html'
   })
 
+  // RESOURCES: usuarios
+  resource( $routeProvider, 'usuarios', 'UsuariosCtrl' );
+
+  // RESOURCES: tipos_de_clientes
+  resource( $routeProvider, 'tipos_de_clientes', 'TiposDeClientesCtrl' );
+
+  // RESOURCES: logradouros
+  resource( $routeProvider, 'logradouros', 'LogradourosCtrl' );
+
   // RESOURCES: retrancas
   resource( $routeProvider, 'retrancas', 'RetrancasCtrl' );
 
