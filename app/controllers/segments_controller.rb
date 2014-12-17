@@ -1,6 +1,13 @@
 class SegmentsController < ApplicationController
   def index
-    render json: Segment.all, status: 200
+    @segments = Segment.all
+
+    unless params[:page].blank?
+      @segments = @segments.paginate page: params[:page]
+      set_header_pagination( @segments )
+    end
+
+    render json: @segments, status: 200
   end
 
   def create
@@ -10,6 +17,11 @@ class SegmentsController < ApplicationController
     else
       render json: @segment.errors, status: 422
     end
+  end
+
+  def show
+    @segment = Segment.find( params[:id] )
+    render json: @segment
   end
 
   def update

@@ -1,6 +1,20 @@
-publimasterApp.controller('SegmentosCtrl', [ "$scope", "$routeParams", "$location", "NavBarService", "type", function($scope, $routeParams, $location, NavBarService, type){
+publimasterApp.controller('SegmentosCtrl', [ "$scope", "$routeParams", "$location", "NavBarService", "type", "Segment", "Crud", function($scope, $routeParams, $location, NavBarService, type, Segment, Crud){
   NavBarService.setMenu( "segmentos" );
-  $scope.show_info = true;
-  $scope.segmentos = [];
-  $scope.pagination = { perPage:0, totalItems: 0, currentPage: parseInt($routeParams.page) || 1 , maxSize: 7 };
+
+  Crud.init( $scope, $routeParams, $location, "segmentos", Segment );
+
+  switch( type ){
+    case "list":
+      $scope.list();
+      break;
+
+    case "new":
+    case "edit":
+    case "show":
+      $scope.findByParamId();
+      break;
+    default:
+      $location.path("/segmentos");
+      break;
+  }
 }])

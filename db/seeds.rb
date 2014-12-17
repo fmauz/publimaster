@@ -1,4 +1,5 @@
-# FactoryGirl.create_list( :client, 150 )
-# FactoryGirl.create_list( :jornal, 150 )
-# FactoryGirl.create_list( :diario_oficial, 150 )
+FactoryGirl.create_list( :client, 150 )
+FactoryGirl.create_list( :jornal, 150 )
+FactoryGirl.create_list( :diario_oficial, 150 )
 FactoryGirl.create_list( :material, 150 )
+FactoryGirl.create_list( :segment, 150 )

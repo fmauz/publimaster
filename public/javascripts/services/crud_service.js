@@ -73,6 +73,7 @@ publimasterApp.factory('Crud', function () {
 
     crudObject["list"] = function(){
         return crudObject.object.query({page: crudObject.$scope.pagination.currentPage}).then(function(results){
+            console.log( results )
             crudObject.$scope.collection = results.items;
             crudObject.$scope.pagination.totalItems = results.pagination.totalItems;
             crudObject.$scope.pagination.currentPage = results.pagination.currentPage;

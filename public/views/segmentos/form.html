@@ -1,0 +1,11 @@
+<div class="form-group" ng-class="{ 'has-error': has_error('name') }">
+  <label class="col-sm-2 control-label" for="field-1">Nome</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" ng-model="model.name" placeholder="Nome do segmento" ui-jq="tooltip" title="Digite o nome" >
+  </div>
+</div>
+
+<div class="form-group-separator"></div>
+<div class="form-group text-center">
+  <button class="btn btn-success btn-single" type="submit">Salvar</button> ou <a href="#/segmentos">cancelar</a>
+</div>
