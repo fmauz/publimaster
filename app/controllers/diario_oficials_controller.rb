@@ -5,6 +5,11 @@ class DiarioOficialsController < ApplicationController
     render json: @diario_oficials
   end
 
+  def show
+    @diario_oficial = DiarioOficial.find( params[:id] )
+    render json: @diario_oficial
+  end
+
   def create
     @diario_oficial = DiarioOficial.new( diario_oficial_params )
     if @diario_oficial.save
