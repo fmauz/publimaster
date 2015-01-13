@@ -6,7 +6,7 @@ class ListingMaterialsTest < ActionDispatch::IntegrationTest
   end
 
   test "listing all Material" do
-    get '/materials'
+    get '/materials', page: 1
 
     assert_equal 200, response.status
     assert_equal Mime::JSON, response.content_type

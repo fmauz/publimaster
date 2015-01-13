@@ -6,7 +6,7 @@ class ListingDiarioOficialTest < ActionDispatch::IntegrationTest
   end
 
   test "listing all Diario Oficial" do
-    get '/diario_oficials'
+    get '/diario_oficials', page: 1
 
     assert_equal 200, response.status
     assert_equal Mime::JSON, response.content_type

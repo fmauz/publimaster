@@ -6,7 +6,7 @@ class ListingClientsTest < ActionDispatch::IntegrationTest
   end
 
   test "listing all clients" do
-  	get '/clients'
+  	get '/clients', page: 1
 
   	assert_equal 200, response.status
   	assert_equal Mime::JSON, response.content_type

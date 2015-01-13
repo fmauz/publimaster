@@ -32,6 +32,6 @@ class PublicacaosController < ApplicationController
   end
 
   def publicacao_params
-    objParam = params.require( :publicacao )#.permit( )
+    params.require( :publicacao ).permit( :client_id, :price, :publication_date_diario_oficial, :publication_date_jornal, :height_jornal, :coluna_jornal, :total_jornal, :diario_oficial_id, :jornal_id, :jornal_material_id, :diario_oficial_material_id )
   end
 end

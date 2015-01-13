@@ -9,5 +9,7 @@ FactoryGirl.define do
     height_jornal 1.5
     coluna_jornal 1.5
     total_jornal 1.5
+    association :jornal_material, factory: :material
+    association :diario_oficial_material, factory: :material
   end
 end
