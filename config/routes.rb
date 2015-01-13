@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   resources :client_types
   resources :segments
   resources :employees
-  resources :states
+  resources :states, only: [:index]
   resources :jornals
   resources :diario_oficials
   resources :materials
   resources :retrancas
 	resources :publicacaos
+	resources :roles, only: [:index]
 end
