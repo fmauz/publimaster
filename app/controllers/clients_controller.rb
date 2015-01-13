@@ -1,8 +1,13 @@
 class ClientsController < ApplicationController
   def index
-    @clients = Client.all.paginate page: params[:page]
-    set_header_pagination( @clients )
-  	render json: @clients    
+    @clients = Client.all
+
+    unless params[:page].blank?
+      @clients = @clients.paginate page: params[:page]
+      set_header_pagination( @clients )
+    end
+
+  	render json: @clients
   end
 
   def show
@@ -37,7 +42,7 @@ class ClientsController < ApplicationController
                                         contact_phones: [ :id, :area_code, :phone_number, :extension, :is_fax, :_destroy ],
                                         contact_emails: [ :id, :email, :contact, :_destroy ]
                                       ] )
-    objParam.to_hash.rename_keys( { "address" => "address_attributes", 
+    objParam.to_hash.rename_keys( { "address" => "address_attributes",
                                     "contact_phones" => "contact_phones_attributes",
                                     "contact_emails" => "contact_emails_attributes" } )
   end

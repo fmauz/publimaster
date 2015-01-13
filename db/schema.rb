@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217183131) do
+ActiveRecord::Schema.define(version: 20150113121647) do
 
   create_table "addresses", force: true do |t|
     t.string   "street_address"
@@ -144,6 +144,28 @@ ActiveRecord::Schema.define(version: 20141217183131) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "publicacaos", force: true do |t|
+    t.integer  "client_id"
+    t.integer  "diario_oficial_id"
+    t.integer  "jornal_id"
+    t.integer  "diario_oficial_material_id"
+    t.integer  "jornal_material_id"
+    t.float    "price",                           limit: 24
+    t.date     "publication_date_diario_oficial"
+    t.date     "publication_date_jornal"
+    t.float    "height_jornal",                   limit: 24
+    t.float    "coluna_jornal",                   limit: 24
+    t.float    "total_jornal",                    limit: 24
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publicacaos", ["client_id"], name: "index_publicacaos_on_client_id", using: :btree
+  add_index "publicacaos", ["diario_oficial_id"], name: "index_publicacaos_on_diario_oficial_id", using: :btree
+  add_index "publicacaos", ["diario_oficial_material_id"], name: "index_publicacaos_on_diario_oficial_material_id", using: :btree
+  add_index "publicacaos", ["jornal_id"], name: "index_publicacaos_on_jornal_id", using: :btree
+  add_index "publicacaos", ["jornal_material_id"], name: "index_publicacaos_on_jornal_material_id", using: :btree
 
   create_table "retrancas", force: true do |t|
     t.string   "name"

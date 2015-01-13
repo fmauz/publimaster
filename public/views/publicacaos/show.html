@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Publicação de {{model.client.name}}</h3>
+      </div>
+      <div class="panel-body">
+
+        <ul class="list-unstyled user-info-list" ng-if="model.jornalId">
+          <li><strong>Jornal:</strong> {{model.jornal.name}}</li>
+          <li><strong>Material:</strong> {{model.jornalMaterial.name}}</li>
+          <li><strong>Data da publicação</strong> {{model.publicationDateJornal}}</li>
+          <li><strong>Formato</strong> {{model.heightJornal}} x {{model.colunaJornal}} = {{model.totalJornal}} cm</li>
+        </ul>
+
+        <ul class="list-unstyled user-info-list" ng-if="model.diarioOficialId">
+          <li><strong>Diario Oficial:</strong> {{model.diarioOficial.name}}</li>
+          <li><strong>Material:</strong> {{model.diarioOficialMaterial.name}}</li>
+          <li><strong>Data da publicação</strong> {{model.publicationDateDiarioOficial}}</li>
+        </ul>
+
+        <ul class="list-unstyled user-info-list">
+          <li><strong>Valor:</strong> {{model.price}}</li>
+        </ul>
+
+        <a href="javascript:history.back(-1)" class="btn btn-large btn-info">Voltar para listagem</a>
+      </div>
+    </div>
+  </div>
+</div>

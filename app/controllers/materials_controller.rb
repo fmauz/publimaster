@@ -1,7 +1,12 @@
 class MaterialsController < ApplicationController
   def index
-    @materials = Material.all.paginate page: params[:page]
-    set_header_pagination( @materials )
+    @materials = Material.all
+
+    unless params[:page].blank?
+      @materials = @materials.paginate page: params[:page]
+      set_header_pagination( @materials )
+    end
+
     render json: @materials
   end
 
@@ -26,7 +31,7 @@ class MaterialsController < ApplicationController
   end
 
   def destroy
-    @material = Material.find( params[:id] ) 
+    @material = Material.find( params[:id] )
     @material.destroy
     render json: @material
   end

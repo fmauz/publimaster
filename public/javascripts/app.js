@@ -63,7 +63,7 @@ publimasterApp.config([ '$routeProvider', '$httpProvider', function($routeProvid
   resource( $routeProvider, 'retrancas', 'RetrancasCtrl' );
 
   // RESOURCES: publicacoes
-  resource( $routeProvider, 'publicacoes', 'PublicacoesCtrl' );
+  resource( $routeProvider, 'publicacaos', 'PublicacoesCtrl' );
 
   // RESOURCES: segmentos
   resource( $routeProvider, 'segmentos', 'SegmentosCtrl' );

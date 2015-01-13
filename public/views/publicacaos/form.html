@@ -1,0 +1,99 @@
+<div class="form-group" ng-class="{ 'has-error': has_error('client') }">
+  <label class="col-sm-2 control-label" for="field-1">Cliente</label>
+  <div class="col-sm-10">
+    <select class="form-control" ng-change="changeNode(clients, model.client, model.clientId)" ng-model="model.clientId" ng-options="client.id as client.name for client in clients" ui-jq="tooltip" title="Selecione um cliente" >
+    </select>
+  </div>
+</div>
+
+<div class="form-group-separator"></div>
+
+<div class="form-group" ng-class="{ 'has-error': has_error('diarioOficial') }">
+  <label class="col-sm-2 control-label" for="field-1">Diario Oficial</label>
+  <div class="col-sm-10">
+    <select class="form-control" ng-change="changeNode(diarioOficial, model.diarioOficial, model.diarioOficialId)" ng-model="model.diarioOficialId" ng-options="diario_oficial.id as diario_oficial.name for diario_oficial in diario_oficials" ui-jq="tooltip" title="Selecione um diario oficial" >
+    </select>
+  </div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': has_error('diarioOficialMaterial') }">
+  <label class="col-sm-2 control-label" for="field-1">Material</label>
+  <div class="col-sm-10">
+    <select class="form-control" ng-change="changeNode(diarioOficialMaterial, model.diarioOficialMaterial, model.diarioOficialMaterialId)" ng-model="model.diarioOficialMaterialId" ng-options="material.id as material.name for material in materials" ui-jq="tooltip" title="Selecione um material" >
+    </select>
+  </div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': has_error('publicationDateDiarioOficial') }">
+  <label class="col-sm-2 control-label" for="field-1">Data de Publicação</label>
+  <div class="col-sm-4">
+    <div class="input-group">
+      <input type="text" is-open="$parent.opened" datepicker-popup="dd/MM/yyyy" class="form-control" ng-model="model.publicationDateDiarioOficial" placeholder="Selecione uma data" close-text="Fechar" clear-text="Limpar" current-text="Hoje" ui-jq="tooltip">
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': has_error('price') }">
+  <label class="col-sm-2 control-label" for="field-1">Valor</label>
+  <div class="col-sm-4">
+      <input type="text" class="form-control" ng-model="model.price" placeholder="Digite um valor" ui-jq="tooltip">
+  </div>
+</div>
+
+
+<div class="form-group-separator"></div>
+
+<div class="form-group" ng-class="{ 'has-error': has_error('jornal') }">
+  <label class="col-sm-2 control-label" for="field-1">Jornal</label>
+  <div class="col-sm-10">
+    <select class="form-control" ng-change="changeNode(jornals, model.jornal, model.jornalId)" ng-model="model.jornalId" ng-options="jornal.id as jornal.name for jornal in jornals" ui-jq="tooltip" title="Selecione um jornal" >
+    </select>
+  </div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': has_error('jornalMaterial') }">
+  <label class="col-sm-2 control-label" for="field-1">Material</label>
+  <div class="col-sm-10">
+    <select class="form-control" ng-change="changeNode(jornalMaterial, model.jornalMaterial, model.jornalMaterialId)" ng-model="model.jornalMaterialId" ng-options="material.id as material.name for material in materials" ui-jq="tooltip" title="Selecione um material" >
+    </select>
+  </div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': has_error('publicationDateJornal') }">
+  <label class="col-sm-2 control-label" for="field-1">Data de Publicação</label>
+  <div class="col-sm-4">
+    <div class="input-group">
+      <input type="text" is-open="$parent.opened" datepicker-popup="dd/MM/yyyy" class="form-control" ng-model="model.publicationDateJornal" placeholder="Selecione uma data" close-text="Fechar" clear-text="Limpar" current-text="Hoje" ui-jq="tooltip">
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': has_error('heightJornal')||has_error('colunaJornal')||has_error('totalJornal') }">
+  <label class="col-sm-2 control-label" for="field-1">Formato</label>
+  <div class="col-sm-2">
+    <input type="text" class="form-control" ng-change="calculateTotal()" ng-model="model.heightJornal" placeholder="Altura" ui-jq="tooltip">
+  </div>
+  <!-- <div class="col-sm-1"><span class="btn btn_link">X</span></div> -->
+  <div class="col-sm-2">
+    <input type="text" class="form-control" ng-change="calculateTotal()" ng-model="model.colunaJornal" placeholder="Coluna" ui-jq="tooltip">
+  </div>
+  <div class="col-sm-1"><span class="btn btn_link">=</span></div>
+  <div class="col-sm-2">
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="model.totalJornal" placeholder="Total" ui-jq="tooltip">
+      <span class="input-group-addon">cm</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="form-group-separator"></div>
+<div class="form-group text-center">
+  <button class="btn btn-success btn-single" type="submit">Salvar</button> ou <a href="#/publicacaos">cancelar</a>
+</div>

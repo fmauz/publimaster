@@ -1,7 +1,12 @@
 class DiarioOficialsController < ApplicationController
   def index
-    @diario_oficials = DiarioOficial.all.paginate page: params[:page]
-    set_header_pagination( @diario_oficials )
+    @diario_oficials = DiarioOficial.all
+
+    unless params[:page].blank?
+      @diario_oficials = @diario_oficials.paginate page: params[:page]
+      set_header_pagination( @diario_oficials )
+    end
+
     render json: @diario_oficials
   end
 

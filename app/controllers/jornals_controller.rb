@@ -1,8 +1,13 @@
 class JornalsController < ApplicationController
   def index
-    @jornals = Jornal.all.paginate page: params[:page]
-    set_header_pagination( @jornals )
-    render json: @jornals  
+    @jornals = Jornal.all
+
+    unless params[:page].blank?
+      @jornals = @jornals.paginate page: params[:page]
+      set_header_pagination( @jornals )
+    end
+
+    render json: @jornals
   end
 
   def update
