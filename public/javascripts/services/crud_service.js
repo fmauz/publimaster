@@ -13,7 +13,7 @@ publimasterApp.factory('Crud', function () {
         crudObject.$scope["collection"] = [];
         crudObject.$scope["finishLoad"] = false;
         crudObject.$scope["pagination"] = { perPage:0, totalItems: 0, currentPage: parseInt(crudObject.$routeParams.page)||1 , maxSize: 7 };
-        
+
         crudObject.$scope["list"] = crudObject.list;
         crudObject.$scope["has_error"] = crudObject.has_error;
 
@@ -26,7 +26,7 @@ publimasterApp.factory('Crud', function () {
         crudObject.$scope["pagination"]["pageChanged"] = crudObject.pageChanged;
 
         crudObject.$scope["new_object_path"] = "#/" + crudObject.resourceName + "/new";
-        
+
         crudObject.$scope["edit_object_path"] = function(object){
             return "#/"+ crudObject.resourceName + "/" + object.id + "/edit";
         }
@@ -51,7 +51,7 @@ publimasterApp.factory('Crud', function () {
     crudObject["destroy"] = function( resource ){
         if( confirm("Deseja apagar o registro ?") ){
           resource.delete().then(function(){
-            crudObject.$scope.collection.splice( crudObject.$scope.collection.indexOf(resource), 1 ); 
+            crudObject.$scope.collection.splice( crudObject.$scope.collection.indexOf(resource), 1 );
             if( crudObject.$scope.collection.length == 0 ){ crudObject.$location.path("/"+crudObject.resourceName); }
           });
         }
@@ -73,7 +73,6 @@ publimasterApp.factory('Crud', function () {
 
     crudObject["list"] = function(){
         return crudObject.object.query({page: crudObject.$scope.pagination.currentPage}).then(function(results){
-            console.log( results )
             crudObject.$scope.collection = results.items;
             crudObject.$scope.pagination.totalItems = results.pagination.totalItems;
             crudObject.$scope.pagination.currentPage = results.pagination.currentPage;
@@ -89,9 +88,9 @@ publimasterApp.factory('Crud', function () {
           });
         }
     }
-    
+
     crudObject["has_error"] = function(){
-        for (var i = arguments.length - 1; i >= 0; i--) 
+        for (var i = arguments.length - 1; i >= 0; i--)
             if ( crudObject["data_error"].hasOwnProperty(arguments[i]) )
                 return true;
         return false;
