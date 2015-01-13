@@ -12,7 +12,7 @@ class PublicacaosController < ApplicationController
 
   def update
     @publicacao = Publicacao.find( params[:id] )
-    @publicacao.update( client_params )
+    @publicacao.update( publicacao_params )
     render json: @client
   end
 
