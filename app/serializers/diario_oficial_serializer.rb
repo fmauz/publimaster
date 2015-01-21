@@ -1,18 +1,22 @@
 class DiarioOficialSerializer < ActiveModel::Serializer
   attributes :id,
-             :name, 
+             :name,
              :contact,
-             :state_id, 
+             :state_id,
              :observation,
              :schedule,
              :source,
              :body,
              :lead,
-             :column,
              :width,
              :height,
              :column_count,
-             :column_width
+             :cm_price,
+             :cm_price_exemplar,
+             :sedex_price,
+             :website,
+             :archive_type,
+             :rules
 
 
   has_one :state
