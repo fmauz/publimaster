@@ -177,9 +177,12 @@ ActiveRecord::Schema.define(version: 20150113121647) do
     t.float    "height",       limit: 24
     t.integer  "column_count"
     t.integer  "column_width"
+    t.integer  "jornal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "retrancas", ["jornal_id"], name: "index_retrancas_on_jornal_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

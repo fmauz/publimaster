@@ -72,7 +72,10 @@ publimasterApp.factory('Crud', function () {
     }
 
     crudObject["list"] = function(){
-        return crudObject.object.query({page: crudObject.$scope.pagination.currentPage}).then(function(results){
+        var params = {page: crudObject.$scope.pagination.currentPage};
+        angular.extend( params, crudObject["$routeParams"] );
+
+        return crudObject.object.query( params ).then(function(results){
             crudObject.$scope.collection = results.items;
             crudObject.$scope.pagination.totalItems = results.pagination.totalItems;
             crudObject.$scope.pagination.currentPage = results.pagination.currentPage;

@@ -27,15 +27,17 @@
                   <th>Nome</th>
                   <th>Contact</th>
                   <th>State</th>
+                  <th>Retrancas</th>
                   <th>Ações</th>
                 </tr>
               </thead>
-              <tbody> 
+              <tbody>
                 <tr ng-repeat="jornal in collection">
                   <th>{{ jornal.id }}</th>
                   <td>{{ jornal.name }}</td>
                   <td>{{ jornal.contact }}</td>
                   <td>{{ jornal.state.name }}</td>
+                  <td><a href="#/retrancas?jornal_id={{ jornal.id }}">Listar retrancas</a></td>
                   <td>
                     <a href="{{edit_object_path(jornal)}}" class="btn btn-secondary btn-sm btn-icon icon-left">Editar</a>
                     <a href="" ng-click="destroy( jornal );" class="btn btn-danger btn-sm btn-icon icon-left">Excluir</a>
@@ -50,13 +52,13 @@
 
         <div class="row" ng-if="collection.length > 0">
           <div class="col-xs-12 text-center">
-            <pagination 
+            <pagination
             items-per-page="pagination.perPage"
             ng-change="pagination.pageChanged()"
-            total-items="pagination.totalItems" 
-            ng-model="pagination.currentPage" 
-            max-size="pagination.maxSize" 
-            class="dataTables_paginate paging_simple_numbers" 
+            total-items="pagination.totalItems"
+            ng-model="pagination.currentPage"
+            max-size="pagination.maxSize"
+            class="dataTables_paginate paging_simple_numbers"
             boundary-links="true"
             previous-text="Anterior"
             next-text="Próximo"

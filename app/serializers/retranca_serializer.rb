@@ -4,7 +4,6 @@ class RetrancaSerializer < ActiveModel::Serializer
              :source,
              :body,
              :lead,
-             :column,
              :width,
              :height,
              :column_count,

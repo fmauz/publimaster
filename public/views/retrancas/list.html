@@ -2,14 +2,20 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Gerenciamento de Retrancas</h3>
+        <h3 class="panel-title">Gerenciamento de Retrancas do Jornal {{jornal.name}}</h3>
       </div>
 
       <div class="panel-body">
         <div class="table-wrapper" ng-if="finishLoad">
           <div class="btn-toolbar">
-            <div class="btn-group focus-btn-group">
-              <a href="{{new_object_path}}" class="btn btn-default"><span class="fa-plus-circle"></span> Inserir novo registro</a>
+            <div class="">
+              <div class="pull-left">
+                <a href="{{new_object_path}}?jornal_id={{jornal.id}}" class="btn btn-default"><span class="fa-plus-circle"></span> Inserir novo registro</a>
+              </div>
+
+              <div class="pull-right">
+                <a href="#/jornais" class="btn btn-warning">Voltar para a listagem do jornal</a>
+              </div>
             </div>
           </div>
 
@@ -30,16 +36,16 @@
                   <th>Ações</th>
                 </tr>
               </thead>
-              <tbody> 
+              <tbody>
                 <tr ng-repeat="retranca in collection">
                   <th>{{ retranca.id }}</th>
                   <td>{{ retranca.name }}</td>
                   <td>{{ retranca.width }}</td>
                   <td>{{ retranca.height }}</td>
                   <td>
-                    <a href="{{edit_object_path( retranca )}}" class="btn btn-secondary btn-sm btn-icon icon-left">Editar</a>
+                    <a href="{{edit_object_path( retranca )}}?jornal_id={{jornal.id}}" class="btn btn-secondary btn-sm btn-icon icon-left">Editar</a>
                     <a href="" ng-click="destroy( retranca );" class="btn btn-danger btn-sm btn-icon icon-left">Excluir</a>
-                    <a href="{{show_object_path(retranca)}}" class="btn btn-info btn-sm btn-icon icon-left">Visualizar</a>
+                    <a href="{{show_object_path(retranca)}}?jornal_id={{jornal.id}}" class="btn btn-info btn-sm btn-icon icon-left">Visualizar</a>
                   </td>
                 </tr>
               </tbody>
@@ -50,13 +56,13 @@
 
         <div class="row" ng-if="collection.length > 0">
           <div class="col-xs-12 text-center">
-            <pagination 
+            <pagination
             items-per-page="pagination.perPage"
             ng-change="pagination.pageChanged()"
-            total-items="pagination.totalItems" 
-            ng-model="pagination.currentPage" 
-            max-size="pagination.maxSize" 
-            class="dataTables_paginate paging_simple_numbers" 
+            total-items="pagination.totalItems"
+            ng-model="pagination.currentPage"
+            max-size="pagination.maxSize"
+            class="dataTables_paginate paging_simple_numbers"
             boundary-links="true"
             previous-text="Anterior"
             next-text="Próximo"

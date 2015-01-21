@@ -11,6 +11,8 @@ class CreateRetrancas < ActiveRecord::Migration
       t.integer :column_count
       t.integer :column_width
 
+      t.references :jornal, index: true
+
       t.timestamps
     end
   end

@@ -2,6 +2,11 @@ class RetrancasController < ApplicationController
 
   def index
     @retrancas = Retranca.all.paginate :page => params[:page]
+
+    unless params[:jornal_id].nil?
+      @retrancas = @retrancas.where( jornal_id: params[:jornal_id])
+    end
+
     set_header_pagination( @retrancas )
     render json: @retrancas, status: 200
   end
@@ -33,7 +38,7 @@ class RetrancasController < ApplicationController
   end
 
   def retranca_params
-    params.require( :retranca ).permit(:name, :body, :lead, :column, :width,
+    params.require( :retranca ).permit(:name, :body, :lead, :width, :jornal_id,
                                            :height, :source, :column_count, :column_width)
   end
 
