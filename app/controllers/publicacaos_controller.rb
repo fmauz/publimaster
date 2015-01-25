@@ -1,7 +1,25 @@
 class PublicacaosController < ApplicationController
   def index
-    @publicacaos = Publicacao.paginate page: params[:page]
-    set_header_pagination( @publicacaos )
+    @publicacaos = Publicacao
+
+    unless params[:client_id].blank?
+      @publicacaos = @publicacaos.where(client_id: params[:client_id])
+    end
+
+    unless params[:jornal_id].blank?
+      @publicacaos = @publicacaos.where(jornal_id: params[:jornal_id])
+    end
+
+    unless params[:page].blank?
+      @publicacaos = @publicacaos.paginate page: params[:page]
+      set_header_pagination( @publicacaos )
+    end
+
+    unless params[:group].blank?
+      @publicacaos = @publicacaos.group( params[:group] + "_id" )
+      @publicacaos = @publicacaos.map{|a| a.send(params[:group]) }
+    end
+
     render json: @publicacaos
   end
 

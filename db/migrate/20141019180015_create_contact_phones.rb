@@ -6,7 +6,8 @@ class CreateContactPhones < ActiveRecord::Migration
       t.string :extension
       t.boolean :is_fax
       t.references :address, index: true
-
+      t.references :jornal, index: true
+      
       t.timestamps
     end
   end

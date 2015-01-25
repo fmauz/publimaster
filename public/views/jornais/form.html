@@ -13,12 +13,95 @@
   </div>
 </div>
 
+<div class="form-group" ng-class="{ 'has-error': has_error('sendSchedule') }">
+  <label class="col-sm-2 control-label" for="field-1">Horário de Envio</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" ng-model="model.sendSchedule" placeholder="00:00" ui-jq="tooltip" title="Digite o horario" >
+  </div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': has_error('sendType') }">
+  <label class="col-sm-2 control-label" for="field-1">Formato de Envio</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" ng-model="model.sendType" placeholder="PDF, XLS, DOC..." ui-jq="tooltip" title="Tipo do arquivo a ser enviado" >
+  </div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': has_error('commissioning') }">
+  <label class="col-sm-2 control-label" for="field-1">Comissionamento</label>
+  <div class="col-sm-10">
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="model.commissioning" placeholder="0.0" ui-jq="tooltip" title="Comissionamento" >
+      <span class="input-group-addon">%</span>
+    </div>
+  </div>
+</div>
+
 <div class="form-group" ng-class="{ 'has-error': has_error('contact') }">
   <label class="col-sm-2 control-label" for="field-1">Contato</label>
   <div class="col-sm-10">
     <input type="text" class="form-control" ng-model="model.contact" placeholder="Contato no jornal" ui-jq="tooltip" title="Digite o nome" >
   </div>
 </div>
+
+
+<div class="form-group-separator"></div>
+
+<div ng-repeat="contact_phone in model.contactPhones">
+  <div class="form-group" ng-if="!contact_phone._destroy">
+    <label class="col-sm-2 control-label" for="field-1">Telefone</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" ng-model="contact_phone.areaCode" ui-mask="99" ui-jq="tooltip" title="Digite o DDD" >
+    </div>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" ng-model="contact_phone.phoneNumber" ui-mask="99999-9999" ui-jq="tooltip" title="Digite o número">
+    </div>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" ng-model="contact_phone.extension" placeholder="Ramal" ui-jq="tooltip" title="Digite o ramal">
+    </div>
+    <div class="col-sm-1">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="contact_phone.isFax" >
+          Fax
+        </label>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-danger btn-single" ng-click="contact_phone._destroy=true">Remover</button>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-3">
+    <button type="button" class="btn btn-secondary btn-single" ng-click="model.contactPhones.push({});">Adicionar novo Telefone</button>
+  </div>
+</div>
+
+<div class="form-group-separator"></div>
+
+<div ng-repeat="contact_email in model.contactEmails">
+  <div class="form-group" ng-if="!contact_email._destroy">
+    <label class="col-sm-2 control-label" for="field-1">Email</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" ng-model="contact_email.email" placeholder="Email" ui-jq="tooltip" title="Digite o e-mail">
+    </div>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" ng-model="contact_email.contact" placeholder="Contato" ui-jq="tooltip" title="Digite o contato">
+    </div>
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-danger btn-single" ng-click="contact_email._destroy=true">Remover</button>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-3">
+    <button type="button" class="btn btn-secondary btn-single" ng-click="model.contactEmails.push({});">Adicionar novo Email</button>
+  </div>
+</div>
+
 
 <div class="form-group-separator"></div>
 

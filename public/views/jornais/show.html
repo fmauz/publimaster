@@ -10,10 +10,67 @@
           <li><strong>Contato:</strong> {{model.contact}}</li>
           <li><strong>Estado:</strong> {{model.state.name}}</li>
 
+          <li><strong>Horário de Envio:</strong> {{model.sendSchedule}}</li>
+          <li><strong>Formato de Envio:</strong> {{model.sendType}}</li>
+          <li><strong>Comissionamento:</strong> {{model.commissioning}}</li>
+
+          <li><strong>Telefones</strong></li>
+          <li ng-repeat="contact_phone in model.contactPhones">
+            <i class="fa-phone"></i> ({{contact_phone.areaCode}}) {{contact_phone.phoneNumber}} {{contact_phone.extension}}
+          </li>
+
+          <li><strong>Emails</strong></li>
+          <li ng-repeat="contact_email in model.contactEmails">
+            <a href="mailto:{{contact_email.email}}"><i class="fa-envelope-o"></i> {{contact_email.email}} <{{contact_email.contact}}></a>
+          </li>
+
           <li><strong>Observação:</strong> {{model.observation}}</li>
         </ul>
 
         <a href="javascript:history.back(-1)" class="btn btn-large btn-info">Voltar para listagem</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Clientes que já publicaram neste jornal</h3>
+      </div>
+      <div class="panel-body">
+
+        <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>CNPJ/CPF</th>
+              <th>Segmento</th>
+              <th>Telefone</th>
+              <th>Atendimento</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="client in clients">
+              <th>{{ client.id }}</th>
+              <td>{{ client.name }}</td>
+              <td>{{ client.cpfCnpj }}</td>
+              <td>{{ client.segment.name }}</td>
+              <td><span ng-if="client.address.contactPhones.length > 0">
+                {{ client.address.contactPhones[0].phoneNumber }}
+              </span></td>
+              <td>{{client.employee.name}}</td>
+              <td>
+                <a href="#/publicacaos?client_id={{client.id}}" class="btn btn-info btn-sm btn-icon icon-left">Ver publicações</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
     </div>
   </div>

@@ -5,7 +5,9 @@ class CreateJornals < ActiveRecord::Migration
       t.references :state, index: true
       t.string :contact
       t.text :observation
-
+      t.string :send_schedule
+      t.string :send_type
+      t.float :commissioning
       t.timestamps
     end
   end

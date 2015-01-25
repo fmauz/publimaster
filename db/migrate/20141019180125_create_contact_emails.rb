@@ -4,6 +4,7 @@ class CreateContactEmails < ActiveRecord::Migration
       t.string :email
       t.string :contact
       t.references :address, index: true
+      t.references :jornal, index: true
 
       t.timestamps
     end

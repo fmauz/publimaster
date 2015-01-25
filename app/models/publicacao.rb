@@ -7,6 +7,5 @@ class Publicacao < ActiveRecord::Base
   belongs_to :jornal_material, class: Material
 
   validates :client,
-            :price,
             presence: true
 end

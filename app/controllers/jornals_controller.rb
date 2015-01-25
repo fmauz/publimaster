@@ -37,6 +37,15 @@ class JornalsController < ApplicationController
   end
 
   def jornal_params
-    params.require( :jornal ).permit( :name, :contact, :observation, :state_id )
+    objParam = params.require( :jornal ).permit( :name, :contact, :observation, :state_id,
+      :send_schedule, :send_type, :commissioning,
+      contact_phones: [ :id, :area_code, :phone_number, :extension, :is_fax, :_destroy ],
+      contact_emails: [ :id, :email, :contact, :_destroy ]
+    )
+
+    objParam.to_hash.rename_keys( {
+      "contact_phones" => "contact_phones_attributes",
+      "contact_emails" => "contact_emails_attributes"
+    })
   end
 end

@@ -70,11 +70,13 @@ ActiveRecord::Schema.define(version: 20150113121647) do
     t.string   "email"
     t.string   "contact"
     t.integer  "address_id"
+    t.integer  "jornal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "contact_emails", ["address_id"], name: "index_contact_emails_on_address_id", using: :btree
+  add_index "contact_emails", ["jornal_id"], name: "index_contact_emails_on_jornal_id", using: :btree
 
   create_table "contact_phones", force: true do |t|
     t.string   "area_code"
@@ -82,11 +84,13 @@ ActiveRecord::Schema.define(version: 20150113121647) do
     t.string   "extension"
     t.boolean  "is_fax"
     t.integer  "address_id"
+    t.integer  "jornal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "contact_phones", ["address_id"], name: "index_contact_phones_on_address_id", using: :btree
+  add_index "contact_phones", ["jornal_id"], name: "index_contact_phones_on_jornal_id", using: :btree
 
   create_table "diario_oficials", force: true do |t|
     t.string   "name"
@@ -133,6 +137,9 @@ ActiveRecord::Schema.define(version: 20150113121647) do
     t.integer  "state_id"
     t.string   "contact"
     t.text     "observation"
+    t.string   "send_schedule"
+    t.string   "send_type"
+    t.float    "commissioning", limit: 24
     t.datetime "created_at"
     t.datetime "updated_at"
   end
