@@ -12,6 +12,7 @@ group :test, :development do
 	gem 'factory_girl_rails'
   gem 'pry'
   gem 'awesome_print'
+  gem 'heroku'
 end
 
 gem "active_model_serializers", "~> 0.8.0"
