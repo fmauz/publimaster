@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+	devise_for :users, controllers: { sessions: "sessions" }
+
 	resources :clients
   resources :street_suffixes
   resources :client_types

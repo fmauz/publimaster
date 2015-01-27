@@ -1,4 +1,4 @@
-var publimasterApp = angular.module( "publimasterApp", ["ngRoute", "ui.utils", "ui.bootstrap", "rails"] );
+var publimasterApp = angular.module( "publimasterApp", ["ngRoute", "ui.utils", "ui.bootstrap", "rails", "Devise", "ngCookies"] );
 
 function resource( $routeProvider, resource_name, controller_name ){
   var router = '/' + resource_name;
@@ -46,8 +46,8 @@ publimasterApp.config([ '$routeProvider', '$httpProvider', function($routeProvid
     templateUrl:'/app.html'
   })
   .when('/users/login', {
-    controller: 'UsersCtrl',
-    templateUrl: '/users/login.html'
+    controller: 'AuthController',
+    templateUrl: '/views/sessions/login.html'
   })
 
   // RESOURCES: usuarios
@@ -92,10 +92,14 @@ publimasterApp.config([ '$routeProvider', '$httpProvider', function($routeProvid
 } ]);
 
 publimasterApp.filter('range', function() {
-return function(val, range) {
-  range = parseInt(range);
-  for (var i=0; i<range; i++)
-    val.push(i);
-    return val;
-  };
+  return function(val, range) {
+    range = parseInt(range);
+    for (var i=0; i<range; i++)
+      val.push(i);
+      return val;
+    };
 });
+
+publimasterApp.config([ "AuthProvider", "AuthInterceptProvider", function(AuthProvider, AuthInterceptProvider) {
+  AuthInterceptProvider.interceptAuth(true);
+}]);

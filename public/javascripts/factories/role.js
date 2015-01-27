@@ -1,4 +1,4 @@
-publimasterApp.factory( 'Role', ["railsResourceFactory",function(railsResourceFactory){
+publimasterApp.factory( 'Role', ["railsResourceFactory", "tokenInterceptor",function(railsResourceFactory, tokenInterceptor){
   return railsResourceFactory({
     url: "/roles",
     name: "role"

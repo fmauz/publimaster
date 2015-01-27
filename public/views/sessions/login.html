@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Login</h3>
+      </div>
+      <div class="panel-body">
+        <p style="text-align:center; margin-bottom:20px;">Para acessar o sistema você precisa estar autorizado! Digite suas credenciais abaixo.</p>
+
+        <div class="alert alert-danger" role="alert" ng-if="error.has">
+          {{error.message}}
+        </div>
+
+        <form class="form-horizontal form-login" role="form" ng-submit="login()">
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="name" placeholder="Digite seu email" ng-model="model.email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">Senha</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword3" placeholder="*****" ng-model="model.password">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2" style="text-align:right">
+              <input type="submit" class="btn btn-success" value="Fazer Login">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
